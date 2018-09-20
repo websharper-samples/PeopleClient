@@ -6,7 +6,7 @@
     <Compile Include="Model.fs" />
     <Compile Include="Update.fs" />
     <Compile Include="View.fs" />
-    <Compile Include="Client.fs" />
+    <Compile Include="App.fs" />
     <Compile Include="Startup.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />

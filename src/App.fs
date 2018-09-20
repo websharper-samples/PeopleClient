@@ -8,7 +8,7 @@ open WebSharper.Sitelets.InferRouter
 open PeopleApi.App.Model
 
 [<JavaScript>]
-module Client =
+module App =
 
     let router = Router.Infer<Page>()
 
