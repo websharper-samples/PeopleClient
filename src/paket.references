@@ -1,4 +1,5 @@
-Microsoft.AspNetCore.All
+Microsoft.AspNetCore
+Microsoft.AspNetCore.StaticFiles
 WebSharper
 WebSharper.FSharp
 WebSharper.AspNetCore
