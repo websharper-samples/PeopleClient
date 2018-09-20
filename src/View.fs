@@ -85,6 +85,8 @@ module View =
                 .Body((V state.V.People).DocSeqCached(PersonRow dispatch state))
                 .Create(fun _ -> dispatch (Goto Creating))
                 .CreateAttr(Common.DisabledWhenRefreshing state)
+                .Refresh(fun _ -> dispatch (RefreshList false))
+                .RefreshAttr(Common.DisabledWhenRefreshing state)
                 .DeleteModalAttr(Attr.ClassPred "is-active" state.V.Deleting.IsSome)
                 .DeleteConfirm(fun _ -> dispatch ConfirmDeletePerson)
                 .DeleteConfirmAttr(Common.DisabledWhenRefreshing state)
