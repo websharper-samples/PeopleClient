@@ -20,3 +20,7 @@ body, #main-container, .ws-page-container {
 .control.has-icons-right .icon.checkbox {
   pointer-events: all;
 }
+
+.table td, .table th {
+  vertical-align: middle;
+}

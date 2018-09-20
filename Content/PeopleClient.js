@@ -3289,7 +3289,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    return function(state)
    {
-    var b,t,D,t$1,D$1,C,t$2,B,p,i;
+    var b,t,D,t$1,D$1,R,t$2,C,t$3,B,p,i;
     function f($1,$2)
     {
      return PeopleList.PersonRow(dispatch,state,$1,$2);
@@ -3297,7 +3297,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     return(b=(t=(D=Common.DisabledWhenRefreshing(state),(t$1=(D$1=AttrModule.DynamicClassPred("is-active",View$1.Map(function($1)
     {
      return $1.Deleting!=null;
-    },state)),(C=Common.DisabledWhenRefreshing(state),(t$2=(B=Doc.ConvertSeqBy(function(kv)
+    },state)),(R=Common.DisabledWhenRefreshing(state),(t$2=(C=Common.DisabledWhenRefreshing(state),(t$3=(B=Doc.ConvertSeqBy(function(kv)
     {
      return kv.K;
     },function(k)
@@ -3316,9 +3316,9 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
      $:0,
      $0:"body",
      $1:B
-    })),t$2.WithHole(Handler.EventQ2(t$2.k,"create",function()
+    })),t$3.WithHole(Handler.EventQ2(t$3.k,"create",function()
     {
-     return t$2.i;
+     return t$3.i;
     },function()
     {
      dispatch({
@@ -3331,6 +3331,19 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
      $:3,
      $0:"createattr",
      $1:C
+    })),t$2.WithHole(Handler.EventQ2(t$2.k,"refresh",function()
+    {
+     return t$2.i;
+    },function()
+    {
+     dispatch({
+      $:2,
+      $0:false
+     });
+    }))).WithHole({
+     $:3,
+     $0:"refreshattr",
+     $1:R
     })).WithHole({
      $:3,
      $0:"deletemodalattr",
