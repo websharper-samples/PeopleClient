@@ -5,4 +5,4 @@ if ($update) {
 }
 
 dotnet build src
-if ($LastErrorCode -ne 0) { throw }
+if ($LastExitCode -ne 0) { throw }
