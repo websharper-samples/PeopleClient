@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>src</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="Content/PeopleClient.css" />
+  <style>
+    /* Don't show the not-yet-loaded templates */
+    [ws-template], [ws-children-template] { display: none; }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    #main {
+      flex: 1;
+      position: relative;
+    }
+
+    .ws-page-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  </style>
+  <script type="text/javascript" src="Content/PeopleClient.head.js"></script>
+</head>
+<body>
+  <h1>PeopleAPI</h1>
+  <div id="main"></div>
+
+  <!-- Below are templates which are loaded on startup by the View. -->
+
+  <div ws-template="Table">
+    <table>
+      <thead>
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Born</th>
+          <th>Died</th>
+        </tr>
+      </thead>
+      <tbody ws-hole="Body">
+        <!-- We define this template nested here rather than on its own like others
+            because the browser's HTML parsing is finicky:
+            it rejects a <tr> tag that isn't inside a table. -->
+        <tr ws-template="Row">
+          <td>${FirstName}</td>
+          <td>${LastName}</td>
+          <td>${Born}</td>
+          <td>${Died}</td>
+          <td>
+            <button ws-onclick="Edit" ws-attr="EditAttr">Edit</button>
+            <button ws-onclick="Delete" ws-attr="DeleteAttr">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <input type="button" value="Create" ws-onclick="Create" ws-attr="CreateAttr" />
+    </div>
+  </div>
+
+  <div ws-template="Form">
+    <form ws-onsubmit="Submit">
+      <input type="text" ws-var="FirstName" />
+      <input type="text" ws-var="LastName" />
+      <input type="date" ws-var="Born" />
+      <input type="checkbox" ws-var="HasDied" />
+      <input type="date" ws-var="Died" ws-attr="DiedAttr" />
+      <input type="submit" value="${SubmitText}" ws-attr="SubmitAttr" />
+      <input type="button" value="Back" ws-onclick="Back" />
+    </div>
+  </div>
+
+  <script type="text/javascript" src="Content/PeopleClient.js"></script>
+</body>
+</html>

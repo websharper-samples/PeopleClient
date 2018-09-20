@@ -1,0 +1,9 @@
+bin/
+obj/
+Content/
+Scripts/
+paket-files/
+build/
+.vs/
+*.user
+launchSettings.json
