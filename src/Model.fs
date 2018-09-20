@@ -4,10 +4,12 @@ open WebSharper
 open WebSharper.JavaScript
 open PeopleApi.App.Model
 
+type PersonId = int
+
 type Page =
     | [<EndPoint "/">] PeopleList
     | [<EndPoint "/create">] Creating
-    | [<EndPoint "/edit">] Editing of int
+    | [<EndPoint "/edit">] Editing of PersonId
 
 type PersonEditing =
     {
@@ -20,11 +22,12 @@ type PersonEditing =
 
 type State =
     {
-        People: Map<int, PersonData>
+        People: Map<PersonId, PersonData>
         Refreshing: bool
         Error: option<string>
         Page: Page
         Editing: PersonEditing
+        Deleting : option<PersonId>
     }
 
 [<JavaScript>]
@@ -53,7 +56,7 @@ module PersonEditing =
             Died = match p.died with None -> "" | Some d -> DateToString d
         }
 
-    let TryToData (id: int) (p: PersonEditing) =
+    let TryToData (id: PersonId) (p: PersonEditing) =
         match TryParseDate p.Born with
         | None -> None
         | Some born ->
@@ -85,4 +88,5 @@ module State =
                     HasDied = false
                     Died = ""
                 }
+            Deleting = None
         }

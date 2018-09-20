@@ -64,7 +64,7 @@ module View =
 
     module PeopleList =
 
-        let PersonRow dispatch (state: View<State>) (pid: int) (person: View<PersonData>) =
+        let PersonRow dispatch (state: View<State>) (pid: PersonId) (person: View<PersonData>) =
             Template.Row()
                 .FirstName(person.V.firstName)
                 .LastName(person.V.lastName)
@@ -76,7 +76,7 @@ module View =
                 )
                 .Edit(fun _ -> dispatch (Goto (Editing pid)))
                 .EditAttr(Common.DisabledWhenRefreshing state)
-                .Delete(fun _ -> dispatch (SubmitDeletePerson pid))
+                .Delete(fun _ -> dispatch (RequestDeletePerson pid))
                 .DeleteAttr(Common.DisabledWhenRefreshing state)
                 .Doc()
 
@@ -85,6 +85,10 @@ module View =
                 .Body((V state.V.People).DocSeqCached(PersonRow dispatch state))
                 .Create(fun _ -> dispatch (Goto Creating))
                 .CreateAttr(Common.DisabledWhenRefreshing state)
+                .DeleteModalAttr(Attr.ClassPred "is-active" state.V.Deleting.IsSome)
+                .DeleteConfirm(fun _ -> dispatch ConfirmDeletePerson)
+                .DeleteConfirmAttr(Common.DisabledWhenRefreshing state)
+                .DeleteCancel(fun _ -> dispatch CancelDeletePerson)
                 .Doc()
         )
 

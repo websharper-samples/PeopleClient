@@ -21,8 +21,10 @@ type Message =
     | UpdateEditing of msg: PersonUpdateMessage
     | RefreshList of gotoList: bool
     | SubmitCreatePerson
-    | SubmitEditPerson of id: int
-    | SubmitDeletePerson of id: int
+    | SubmitEditPerson of id: PersonId
+    | RequestDeletePerson of id: PersonId
+    | ConfirmDeletePerson
+    | CancelDeletePerson
     | ListRefreshed of people: PersonData[] * gotoList: bool
     | Error of error: string
 
@@ -40,8 +42,8 @@ module Update =
         +
         CommandAsync (fun dispatch -> async {
             try
-                // Delay command so that we can see loading animations
-                do! Async.Sleep 1000
+                // Uncomment to delay the command, to see the loading animations
+                // do! Async.Sleep 1000
                 let! res = Promise.AsAsync <| promise {
                     let! ep =
                         EndPoint.Api endpoint
@@ -102,9 +104,17 @@ module Update =
             | Some editing ->
                 DispatchAjax (ApiEndPoint.EditPerson editing)
                     (fun _ -> RefreshList true)
-        | SubmitDeletePerson pid ->
-            DispatchAjax (ApiEndPoint.DeletePerson pid)
-                (fun _ -> RefreshList true)
+        | RequestDeletePerson pid ->
+            SetModel { state with Deleting = Some pid }
+        | CancelDeletePerson ->
+            SetModel { state with Deleting = None }
+        | ConfirmDeletePerson ->
+            match state.Deleting with
+            | None ->
+                DoNothing
+            | Some pid ->
+                DispatchAjax (ApiEndPoint.DeletePerson pid)
+                    (fun _ -> RefreshList true)
         | ListRefreshed (people, gotoList) ->
             let people = Map [ for p in people -> p.id, p ]
             let page = if gotoList then PeopleList else state.Page
@@ -112,6 +122,7 @@ module Update =
                 state with
                     Page = page
                     Refreshing = false
+                    Deleting = None
                     People = people
                     Error = None
                     Editing =

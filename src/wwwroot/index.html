@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>src</title>
+  <title>PeopleAPI Client</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
@@ -54,6 +54,18 @@
       <button class="button" type="button" ws-onclick="Create" ws-attr="CreateAttr">
         Create a new entry
       </button>
+    </div>
+    <div class="modal" ws-attr="DeleteModalAttr">
+      <div class="modal-background"></div>
+      <div class="modal-content box">
+        <h2 class="subtitle">
+          Do you really want to remove this person from the database?
+        </h2>
+        <div class="buttons is-right">
+          <button class="button is-danger" ws-onclick="DeleteConfirm" ws-attr="DeleteConfirmAttr">Yes</button>
+          <button class="button" ws-onclick="DeleteCancel">No</button>
+        </div>
+      </div>
     </div>
   </div>
 
