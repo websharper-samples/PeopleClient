@@ -46,7 +46,7 @@ module Update =
                 // do! Async.Sleep 1000
                 let! res = Promise.AsAsync <| promise {
                     let! ep =
-                        EndPoint.Api endpoint
+                        EndPoint.Api (Cors.Of endpoint)
                         |> Router.FetchWith (Some BaseUrl) (RequestOptions()) route
                     return! ep.Text()
                 }
