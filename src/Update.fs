@@ -31,7 +31,7 @@ type Message =
 [<JavaScript>]
 module Update =
 
-    let [<Literal>] BaseUrl = "http://localhost:5000"
+    let [<Literal>] BaseUrl = "https://peopleapi.websharper.com"
 
     let route = Router.Infer<EndPoint>()
 
