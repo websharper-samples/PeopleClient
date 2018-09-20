@@ -4,50 +4,34 @@
   <title>src</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
   <link rel="stylesheet" type="text/css" href="Content/PeopleClient.css" />
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
   <style>
     /* Don't show the not-yet-loaded templates */
     [ws-template], [ws-children-template] { display: none; }
-
-    body {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-    }
-
-    #main {
-      flex: 1;
-      position: relative;
-    }
-
-    .ws-page-container {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-    }
   </style>
   <script type="text/javascript" src="Content/PeopleClient.head.js"></script>
 </head>
 <body>
-  <h1>PeopleAPI</h1>
-  <div id="main"></div>
+  <div class="container" id="main-container">
+    <section class="section">
+      <h1 class="title">PeopleAPI</h1>
+    </section>
+    <section class="section" id="main"></div>
+  </div>
 
   <!-- Below are templates which are loaded on startup by the View. -->
 
   <div ws-template="Table">
-    <table>
+    <table class="table is-fullwidth">
       <thead>
         <tr>
           <th>First name</th>
           <th>Last name</th>
           <th>Born</th>
           <th>Died</th>
+          <th></th>
         </tr>
       </thead>
       <tbody ws-hole="Body">
@@ -60,26 +44,85 @@
           <td>${Born}</td>
           <td>${Died}</td>
           <td>
-            <button ws-onclick="Edit" ws-attr="EditAttr">Edit</button>
-            <button ws-onclick="Delete" ws-attr="DeleteAttr">Delete</button>
+            <button class="button" ws-onclick="Edit" ws-attr="EditAttr">Edit</button>
+            <button class="button" ws-onclick="Delete" ws-attr="DeleteAttr">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
     <div>
-      <input type="button" value="Create" ws-onclick="Create" ws-attr="CreateAttr" />
+      <button class="button" type="button" ws-onclick="Create" ws-attr="CreateAttr">
+        Create a new entry
+      </button>
     </div>
   </div>
 
   <div ws-template="Form">
     <form ws-onsubmit="Submit">
-      <input type="text" ws-var="FirstName" />
-      <input type="text" ws-var="LastName" />
-      <input type="date" ws-var="Born" />
-      <input type="checkbox" ws-var="HasDied" />
-      <input type="date" ws-var="Died" ws-attr="DiedAttr" />
-      <input type="submit" value="${SubmitText}" ws-attr="SubmitAttr" />
-      <input type="button" value="Back" ws-onclick="Back" />
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">First name</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" ws-var="FirstName" autofocus />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Last name</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" ws-var="LastName" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Born</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="date" ws-var="Born" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal is-grouped">
+        <div class="field-label is-normal">
+          <label class="label">Died</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control has-icons-left">
+              <input class="input" type="date" ws-var="Died" ws-attr="DiedAttr" />
+              <span class="icon is-left checkbox">
+                <input class="checkbox" type="checkbox" ws-var="HasDied" />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field is-horizontal">
+        <div class="field-label"></div>
+        <div class="field-body">
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button" type="submit" ws-attr="SubmitAttr">${SubmitText}</button>
+            </div>
+            <div class="control">
+              <button class="button" type="button" ws-onclick="Back">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

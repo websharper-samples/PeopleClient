@@ -21,7 +21,10 @@ module View =
             }
 
         let DisabledWhenRefreshing (state: View<State>) =
-            Attr.Prop "disabled" state.V.Refreshing
+            Attr.Concat [
+                Attr.Prop "disabled" state.V.Refreshing
+                Attr.ClassPred "is-loading" state.V.Refreshing
+            ]
 
         let EditForm (dispatch: Dispatch<Message>) (state: View<State>) (param: EditFormParams) =
             let dispatchEditing msg = dispatch << UpdateEditing << msg

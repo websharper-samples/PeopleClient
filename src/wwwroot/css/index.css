@@ -1,0 +1,22 @@
+body, #main-container, .ws-page-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#main {
+  flex: 1;
+  position: relative;
+}
+
+.control.has-icons-left .icon.checkbox,
+.control.has-icons-right .icon.checkbox {
+  pointer-events: all;
+}
