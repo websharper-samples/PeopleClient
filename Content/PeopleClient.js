@@ -333,7 +333,6 @@ if (!console) {
         warn: ignore
     }
 };
-var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n:n}function f(n){return o.lastIndex=0,o.test(n)?'"'+n.replace(o,function(n){var t=s[n];return typeof t=="string"?t:"\\u"+("0000"+n.charCodeAt(0).toString(16)).slice(-4)})+'"':'"'+n+'"'}function r(i,e){var s,l,h,a,v=n,c,o=e[i];o&&typeof o=="object"&&typeof o.toJSON=="function"&&(o=o.toJSON(i)),typeof t=="function"&&(o=t.call(e,i,o));switch(typeof o){case"string":return f(o);case"number":return isFinite(o)?String(o):"null";case"boolean":case"null":return String(o);case"object":if(!o)return"null";if(n+=u,c=[],Object.prototype.toString.apply(o)==="[object Array]"){for(a=o.length,s=0;s<a;s+=1)c[s]=r(s,o)||"null";return h=c.length===0?"[]":n?"[\n"+n+c.join(",\n"+n)+"\n"+v+"]":"["+c.join(",")+"]",n=v,h}if(t&&typeof t=="object")for(a=t.length,s=0;s<a;s+=1)typeof t[s]=="string"&&(l=t[s],h=r(l,o),h&&c.push(f(l)+(n?": ":":")+h));else for(l in o)Object.prototype.hasOwnProperty.call(o,l)&&(h=r(l,o),h&&c.push(f(l)+(n?": ":":")+h));return h=c.length===0?"{}":n?"{\n"+n+c.join(",\n"+n)+"\n"+v+"}":"{"+c.join(",")+"}",n=v,h}}typeof Date.prototype.toJSON!="function"&&(Date.prototype.toJSON=function(){return isFinite(this.valueOf())?this.getUTCFullYear()+"-"+i(this.getUTCMonth()+1)+"-"+i(this.getUTCDate())+"T"+i(this.getUTCHours())+":"+i(this.getUTCMinutes())+":"+i(this.getUTCSeconds())+"Z":null},String.prototype.toJSON=Number.prototype.toJSON=Boolean.prototype.toJSON=function(){return this.valueOf()});var e=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,o=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,n,u,s={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},t;typeof JSON.stringify!="function"&&(JSON.stringify=function(i,f,e){var o;if(n="",u="",typeof e=="number")for(o=0;o<e;o+=1)u+=" ";else typeof e=="string"&&(u=e);if(t=f,f&&typeof f!="function"&&(typeof f!="object"||typeof f.length!="number"))throw new Error("JSON.stringify");return r("",{"":i})}),typeof JSON.parse!="function"&&(JSON.parse=function(n,t){function r(n,i){var f,e,u=n[i];if(u&&typeof u=="object")for(f in u)Object.prototype.hasOwnProperty.call(u,f)&&(e=r(u,f),e!==undefined?u[f]=e:delete u[f]);return t.call(n,i,u)}var i;if(n=String(n),e.lastIndex=0,e.test(n)&&(n=n.replace(e,function(n){return"\\u"+("0000"+n.charCodeAt(0).toString(16)).slice(-4)})),/^[\],:{}\s]*$/.test(n.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,"@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,"]").replace(/(?:^|:|,)(?:\s*\[)+/g,"")))return i=eval("("+n+")"),typeof t=="function"?r({"":i},""):i;throw new SyntaxError("JSON.parse");})}();;
 (function () {
     var lastTime = 0;
     var vendors = ['webkit', 'moz'];
@@ -359,6 +358,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
         };
 }());
 ;
+var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n:n}function f(n){return o.lastIndex=0,o.test(n)?'"'+n.replace(o,function(n){var t=s[n];return typeof t=="string"?t:"\\u"+("0000"+n.charCodeAt(0).toString(16)).slice(-4)})+'"':'"'+n+'"'}function r(i,e){var s,l,h,a,v=n,c,o=e[i];o&&typeof o=="object"&&typeof o.toJSON=="function"&&(o=o.toJSON(i)),typeof t=="function"&&(o=t.call(e,i,o));switch(typeof o){case"string":return f(o);case"number":return isFinite(o)?String(o):"null";case"boolean":case"null":return String(o);case"object":if(!o)return"null";if(n+=u,c=[],Object.prototype.toString.apply(o)==="[object Array]"){for(a=o.length,s=0;s<a;s+=1)c[s]=r(s,o)||"null";return h=c.length===0?"[]":n?"[\n"+n+c.join(",\n"+n)+"\n"+v+"]":"["+c.join(",")+"]",n=v,h}if(t&&typeof t=="object")for(a=t.length,s=0;s<a;s+=1)typeof t[s]=="string"&&(l=t[s],h=r(l,o),h&&c.push(f(l)+(n?": ":":")+h));else for(l in o)Object.prototype.hasOwnProperty.call(o,l)&&(h=r(l,o),h&&c.push(f(l)+(n?": ":":")+h));return h=c.length===0?"{}":n?"{\n"+n+c.join(",\n"+n)+"\n"+v+"}":"{"+c.join(",")+"}",n=v,h}}typeof Date.prototype.toJSON!="function"&&(Date.prototype.toJSON=function(){return isFinite(this.valueOf())?this.getUTCFullYear()+"-"+i(this.getUTCMonth()+1)+"-"+i(this.getUTCDate())+"T"+i(this.getUTCHours())+":"+i(this.getUTCMinutes())+":"+i(this.getUTCSeconds())+"Z":null},String.prototype.toJSON=Number.prototype.toJSON=Boolean.prototype.toJSON=function(){return this.valueOf()});var e=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,o=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,n,u,s={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},t;typeof JSON.stringify!="function"&&(JSON.stringify=function(i,f,e){var o;if(n="",u="",typeof e=="number")for(o=0;o<e;o+=1)u+=" ";else typeof e=="string"&&(u=e);if(t=f,f&&typeof f!="function"&&(typeof f!="object"||typeof f.length!="number"))throw new Error("JSON.stringify");return r("",{"":i})}),typeof JSON.parse!="function"&&(JSON.parse=function(n,t){function r(n,i){var f,e,u=n[i];if(u&&typeof u=="object")for(f in u)Object.prototype.hasOwnProperty.call(u,f)&&(e=r(u,f),e!==undefined?u[f]=e:delete u[f]);return t.call(n,i,u)}var i;if(n=String(n),e.lastIndex=0,e.test(n)&&(n=n.replace(e,function(n){return"\\u"+("0000"+n.charCodeAt(0).toString(16)).slice(-4)})),/^[\],:{}\s]*$/.test(n.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,"@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,"]").replace(/(?:^|:|,)(?:\s*\[)+/g,"")))return i=eval("("+n+")"),typeof t=="function"?r({"":i},""):i;throw new SyntaxError("JSON.parse");})}();;
 (function()
 {
  "use strict";
@@ -656,7 +656,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  StateModule.Init=function()
  {
   SC$1.$cctor();
-  return SC$1.Init;
+  return SC$1.Init$1;
  };
  Update.UpdateApp=function(message,state)
  {
@@ -677,7 +677,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    return{
     $:8,
-    $0:((Provider.DecodeArray(PeopleClient_JsonDecoder.j))())(JSON.parse(res)),
+    $0:((Provider.DecodeArray(PeopleClient_JsonDecoder.j))())(res),
     $1:gotoList
    };
   })):message.$==3?(m=PersonEditingModule.TryToData(0,state.Editing),m!=null&&m.$==1?Update.DispatchAjax({
@@ -808,7 +808,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    Page:{
     $:1
    },
-   Editing:StateModule.Init().Editing,
+   Editing:PersonEditingModule.Init(),
    Deleting:state.Deleting
   }:page.$==2?(pid=page.$0,{
    People:state.People,
@@ -834,38 +834,38 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    Deleting:state.Deleting
   };
  };
- Update.UpdatePerson=function(message,state)
+ Update.UpdatePerson=function(message,person)
  {
   return message.$==1?{
-   FirstName:state.FirstName,
+   FirstName:person.FirstName,
    LastName:message.$0,
-   Born:state.Born,
-   HasDied:state.HasDied,
-   Died:state.Died
+   Born:person.Born,
+   HasDied:person.HasDied,
+   Died:person.Died
   }:message.$==2?{
-   FirstName:state.FirstName,
-   LastName:state.LastName,
+   FirstName:person.FirstName,
+   LastName:person.LastName,
    Born:message.$0,
-   HasDied:state.HasDied,
-   Died:state.Died
+   HasDied:person.HasDied,
+   Died:person.Died
   }:message.$==3?{
-   FirstName:state.FirstName,
-   LastName:state.LastName,
-   Born:state.Born,
-   HasDied:state.HasDied,
+   FirstName:person.FirstName,
+   LastName:person.LastName,
+   Born:person.Born,
+   HasDied:person.HasDied,
    Died:message.$0
   }:message.$==4?{
-   FirstName:state.FirstName,
-   LastName:state.LastName,
-   Born:state.Born,
+   FirstName:person.FirstName,
+   LastName:person.LastName,
+   Born:person.Born,
    HasDied:message.$0,
-   Died:state.Died
+   Died:person.Died
   }:{
    FirstName:message.$0,
-   LastName:state.LastName,
-   Born:state.Born,
-   HasDied:state.HasDied,
-   Died:state.Died
+   LastName:person.LastName,
+   Born:person.Born,
+   HasDied:person.HasDied,
+   Died:person.Died
   };
  };
  Update.DispatchAjax=function(endpoint,parseSuccess)
@@ -911,7 +911,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
         $0:"https://peopleapi.websharper.com"
        },{},Update.route(),e)).then(function(a)
        {
-        return a.text();
+        return a.json();
        });
       }
       return Concurrency.Bind(Promise.AsAsync((b$1=null,new Global.Promise(function($1)
@@ -1141,19 +1141,20 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   SC$1.$cctor=Global.ignore;
   SC$1.Init={
+   FirstName:"",
+   LastName:"",
+   Born:"",
+   HasDied:false,
+   Died:""
+  };
+  SC$1.Init$1={
    People:new FSharpMap.New([]),
    Refreshing:true,
    Error:null,
    Page:{
     $:0
    },
-   Editing:{
-    FirstName:"",
-    LastName:"",
-    Born:"",
-    HasDied:false,
-    Died:""
-   },
+   Editing:PersonEditingModule.Init(),
    Deleting:null
   };
  };
@@ -1348,6 +1349,11 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    HasDied:p.died!=null,
    Died:(m=p.died,m!=null&&m.$==1?PersonEditingModule.DateToString(m.$0):"")
   };
+ };
+ PersonEditingModule.Init=function()
+ {
+  SC$1.$cctor();
+  return SC$1.Init;
  };
  PersonEditingModule.TryParseDate=function(s)
  {
