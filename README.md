@@ -8,9 +8,9 @@ It features:
 * HTML templating with [WebSharper.UI](https://developers.websharper.com/docs/v4.x/fs/ui#templating);
 * server interaction using a WebSharper [Sitelet router](https://developers.websharper.com/docs/v4.x/fs/sitelets#sitelet-infer), defined from the exact same endpoint and data types as the server.
 
-You can see this application running live [here](https://websharper-samples.github.com/PeopleClient). This instance connects to the server running [here](https://peopleapi.websharper.com).
+You can see this application running live [here](https://websharper-samples.github.io/PeopleClient). This instance connects to the server running [here](https://peopleapi.websharper.com).
 
-[![App screenshot](docs/peopleclient.png)](https://websharper-samples.github.com/PeopleClient)
+[![App screenshot](docs/peopleclient.png)](https://websharper-samples.github.io/PeopleClient)
 
 ## Requirements
 
