@@ -7,6 +7,8 @@ open WebSharper.Sitelets
 open PeopleApi.App.Model
 open PeopleClient
 
+/// A message that indicates how to update the person being edited/created.
+// Note: NamedUnionCases is just so that this type is formatted nicely by Json.Encode in App.fs
 [<NamedUnionCases>]
 type PersonUpdateMessage =
     | SetFirstName of firstName: string
@@ -15,6 +17,8 @@ type PersonUpdateMessage =
     | SetDied of died: string
     | SetHasDied of hasDied: bool
 
+/// A message that indicates how to update the application's state.
+// Note: NamedUnionCases is just so that this type is formatted nicely by Json.Encode in App.fs
 [<NamedUnionCases "type">]
 type Message =
     | Goto of page: Page
@@ -28,22 +32,24 @@ type Message =
     | ListRefreshed of people: PersonData[] * gotoList: bool
     | Error of error: string
 
+/// Update the application state based on a message.
 [<JavaScript>]
 module Update =
 
+    /// The base URL of the API server.
     let [<Literal>] BaseUrl = "https://peopleapi.websharper.com"
 
+    /// The router for the API server.
     let route = Router.Infer<EndPoint>()
 
+    /// Call the API server on this endpoint and convert its JSON response to a message.
     let DispatchAjax (endpoint: ApiEndPoint) (parseSuccess: obj -> Message) =
-        // We use UpdateModel because SetModel would "overwrite" changes
-        // previously done with SetModel.
         UpdateModel (fun state -> { state with Refreshing = true })
         +
         CommandAsync (fun dispatch -> async {
             try
                 // Uncomment to delay the command, to see the loading animations
-                // do! Async.Sleep 1000
+                do! Async.Sleep 1000
                 let! res = Promise.AsAsync <| promise {
                     let! ep =
                         EndPoint.Api (Cors.Of endpoint)
@@ -55,7 +61,8 @@ module Update =
                 dispatch (Error e.Message)
         })
 
-    let UpdatePerson (message: PersonUpdateMessage) (person: PersonEditing) =
+    /// Update the person being edited based on a message.
+    let UpdatePerson (message: PersonUpdateMessage) (person: PersonEditorState) =
         match message with
         | SetFirstName s -> { person with FirstName = s }
         | SetLastName s -> { person with LastName = s }
@@ -63,6 +70,7 @@ module Update =
         | SetDied s -> { person with Died = s }
         | SetHasDied b -> { person with HasDied = b }
 
+    /// Go to the given page, adjusting the state accordingly.
     let Goto (page: Page) (state: State) : State =
         match page with
         | PeopleList ->
@@ -70,17 +78,18 @@ module Update =
         | Creating ->
             { state with
                 Page = Creating
-                Editing = PersonEditing.Init
+                Editing = PersonEditorState.Init
             }
         | Editing pid ->
             { state with
                 Page = Editing pid
                 Editing =
                     Map.tryFind pid state.People
-                    |> Option.map PersonEditing.OfData
+                    |> Option.map PersonEditorState.OfData
                     |> Option.defaultValue state.Editing
             }
 
+    /// Update the application state based on a message.
     let UpdateApp (message: Message) (state: State) : Action<Message, State> =
         match message with
         | Goto page ->
@@ -91,14 +100,14 @@ module Update =
             DispatchAjax ApiEndPoint.GetPeople
                 (fun res -> ListRefreshed (Json.Decode res, gotoList))
         | SubmitCreatePerson ->
-            match PersonEditing.TryToData 0 state.Editing with
+            match PersonEditorState.TryToData 0 state.Editing with
             | None ->
                 SetModel { state with Error = Some "Invalid person" }
             | Some editing ->
                 DispatchAjax (ApiEndPoint.CreatePerson editing)
                     (fun _ -> RefreshList true)
         | SubmitEditPerson id ->
-            match PersonEditing.TryToData id state.Editing with
+            match PersonEditorState.TryToData id state.Editing with
             | None ->
                 SetModel { state with Error = Some "Invalid person" }
             | Some editing ->
@@ -129,7 +138,7 @@ module Update =
                         match page with
                         | Editing id ->
                             Map.tryFind id people
-                            |> Option.map PersonEditing.OfData
+                            |> Option.map PersonEditorState.OfData
                             |> Option.defaultValue state.Editing
                         | _ -> state.Editing
             }

@@ -7,25 +7,31 @@ open WebSharper.UI.Templating
 open WebSharper.UI.Client
 open PeopleApi.App.Model
 
+/// Display the application based on the state.
 [<JavaScript>]
 module View =
 
+    /// Parses index.html to extract templates.
     type Template = Templating.Template<"wwwroot/index.html", ClientLoad.FromDocument>
 
     module Common =
 
+        /// Parameters that distinguish the Creating and Editing pages.
         type EditFormParams =
             {
                 SubmitText: string
                 SubmitMessage: Message
             }
 
-        let DisabledWhenRefreshing (state: View<State>) =
+        /// Attribute that makes a button disabled and show a loader
+        /// when the application is refreshing.
+        let DisabledWhenRefreshing (state: View<State>) : Attr =
             Attr.Concat [
                 Attr.Prop "disabled" state.V.Refreshing
                 Attr.ClassPred "is-loading" state.V.Refreshing
             ]
 
+        /// The editor form used by the Creating and Editing pages.
         let EditForm (dispatch: Dispatch<Message>) (state: View<State>) (param: EditFormParams) =
             let dispatchEditing msg = dispatch << UpdateEditing << msg
             Template.Form()
@@ -46,6 +52,8 @@ module View =
 
     module EditPerson =
 
+        /// The page to edit a person's data.
+        /// Uses Page.Create to make a page that is indexed by PersonId.
         let Page = Page.Create(fun pid (dispatch: Dispatch<Message>) (state: View<State>) ->
             Common.EditForm dispatch state {
                 SubmitText = "Edit"
@@ -55,6 +63,8 @@ module View =
 
     module CreatePerson =
 
+        /// The page to create a new person.
+        /// Uses Page.Single to create a single instance of the page.
         let Page = Page.Single(fun (dispatch: Dispatch<Message>) (state: View<State>) ->
             Common.EditForm dispatch state {
                 SubmitText = "Create"
@@ -64,6 +74,7 @@ module View =
 
     module PeopleList =
 
+        /// Display a person's data in a table row.
         let PersonRow dispatch (state: View<State>) (pid: PersonId) (person: View<PersonData>) =
             Template.Row()
                 .FirstName(person.V.firstName)
@@ -80,6 +91,8 @@ module View =
                 .DeleteAttr(Common.DisabledWhenRefreshing state)
                 .Doc()
 
+        /// The page for the list of people.
+        /// Uses Page.Single to create a single instance of the page.
         let Page = Page.Single(fun (dispatch: Dispatch<Message>) (state: View<State>) ->
             Template.Table()
                 .Body((V state.V.People).DocSeqCached(PersonRow dispatch state))
@@ -94,6 +107,9 @@ module View =
                 .Doc()
         )
 
+    /// Decide which page to display based on the application state.
+    /// Note that the Page.* functions above create cached pages,
+    /// their content is not called again on every state change.
     let Page state =
         match state.Page with
         | PeopleList -> PeopleList.Page ()

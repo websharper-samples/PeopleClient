@@ -10,8 +10,10 @@ open PeopleApi.App.Model
 [<JavaScript>]
 module App =
 
+    /// The router for the client application's local pages.
     let router = Router.Infer<Page>()
 
+    /// Startup function for the application.
     [<SPAEntryPoint>]
     let Main () =
         App.CreatePaged State.Init Update.UpdateApp View.Page

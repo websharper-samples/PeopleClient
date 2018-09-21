@@ -7,13 +7,14 @@ open PeopleApi.App.Model
 
 type PersonId = int
 
+/// An identifier for the page being shown.
 type Page =
     | [<EndPoint "/">] PeopleList
     | [<EndPoint "/create">] Creating
     | [<EndPoint "/edit">] Editing of PersonId
 
 /// Contents of the fields of the Creating and Editing pages.
-type PersonEditing =
+type PersonEditorState =
     {
         FirstName: string
         LastName: string
@@ -29,16 +30,19 @@ type State =
         Refreshing: bool
         Error: option<string>
         Page: Page
-        Editing: PersonEditing
+        Editing: PersonEditorState
         Deleting : option<PersonId>
     }
 
+/// Operations on a person editor state.
 [<JavaScript>]
-module PersonEditing =
+module PersonEditorState =
 
+    /// Convert a date to a string using the same format as <input type="date">.
     let DateToString (date: DateTime) : string =
         sprintf "%04i-%02i-%02i" date.Year date.Month date.Day
 
+    /// Convert a date from a string using the same format as <input type="date">.
     let TryParseDate (s: string) : option<DateTime> =
         let d = JavaScript.Date(s)
         if Number.IsNaN (d.GetTime()) then
@@ -46,7 +50,8 @@ module PersonEditing =
         else
             Some d.Self
 
-    let OfData (p: PersonData) : PersonEditing =
+    /// Create editor state from a person data.
+    let OfData (p: PersonData) : PersonEditorState =
         {
             FirstName = p.firstName
             LastName = p.lastName
@@ -55,7 +60,8 @@ module PersonEditing =
             Died = match p.died with None -> "" | Some d -> DateToString d
         }
 
-    let TryToData (id: PersonId) (p: PersonEditing) : option<PersonData> =
+    /// Extract person data from an editor state.
+    let TryToData (id: PersonId) (p: PersonEditorState) : option<PersonData> =
         match TryParseDate p.Born with
         | None -> None
         | Some born ->
@@ -70,6 +76,7 @@ module PersonEditing =
                     died = if hasDied then died else None
                 }
 
+    /// Empty editor state.
     let Init =
         {
             FirstName = ""
@@ -79,15 +86,17 @@ module PersonEditing =
             Died = ""
         }
 
+/// Operations on application state.
 [<JavaScript>]
 module State =
 
+    /// Initial application state.
     let Init : State =
         {
             People = Map.empty
             Refreshing = true
             Error = None
             Page = PeopleList
-            Editing = PersonEditing.Init
+            Editing = PersonEditorState.Init
             Deleting = None
         }
