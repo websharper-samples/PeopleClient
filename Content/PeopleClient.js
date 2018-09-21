@@ -362,7 +362,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
 (function()
 {
  "use strict";
- var Global,PeopleClient,App,WebSharper,Operators,Mvu,App$1,StateModule,Update,View,PeopleClient_JsonEncoder,PeopleClient_JsonDecoder,PeopleClient_Router,PeopleClient_Templates,Obj,Pager,SC$1,ClientSideJson,Provider,PersonEditingModule,Action,Collections,FSharpMap,Seq,Map,Option,CreatePerson,EditPerson,PeopleList,UI,Var,SC$2,Client,Templates,Doc,JavaScript,Pervasives,Ref,Unchecked,Lazy,Promise,Sitelets,RouterModule,MapUtil,List,Enumerator,T,SC$3,Router,Var$1,View$1,JS,Arrays,Object,EventTarget,Node,Dictionary,DomUtility,Elt,EltUpdater,Numeric,LazyExtensionsProxy,LazyRecord,HtmlModule,attr,Page,T$1,Concurrency,Route,SC$4,BalancedTree,Tree,Pair,Utils,Common,EditFormParams,Templating,Runtime,Server,TemplateInstance,ProviderBuilder,Handler,AttrModule,WindowOrWorkerGlobalScope,Abbrev,Fresh,RouterOperators,SC$5,HashSet,SC$6,Docs,ConcreteVar,Snap,Updates,DocElemNode,AttrProxy,AsyncBody,Error,NonStandardPromiseRejectionException,Router$1,PathUtil,Strings,SC$7,List$1,System,Guid,Attrs,Client$1,List$2,DictionaryUtil,Prepare,Slice,KeyCollection,CharacterData,An,Settings,Mailbox,CT,Attrs$1,Dyn,InvalidOperationException,Scheduler,CancellationTokenSource,FromView,CheckedInput,Array,DynamicAttrNode,SC$8,SC$9,Docs$1,RunState,NodeSet,Anims,SC$10,OperationCanceledException,StringEncoding,Char,SC$11,AppendList,HashSetUtil,SC$12,Easing,HashSet$1,Queue,DomNodes,String,SC$13,FormatException,console,IntelliFactory,Runtime$1,JSON,Number,$,Math,Date,String$1;
+ var Global,PeopleClient,App,WebSharper,Operators,Mvu,App$1,StateModule,Update,View,PeopleClient_JsonEncoder,PeopleClient_JsonDecoder,PeopleClient_Router,PeopleClient_Templates,Obj,Pager,SC$1,ClientSideJson,Provider,PersonEditorStateModule,Action,Collections,FSharpMap,Seq,Map,Option,CreatePerson,EditPerson,PeopleList,UI,Var,SC$2,Client,Templates,Doc,JavaScript,Pervasives,Ref,Unchecked,Lazy,Promise,Sitelets,RouterModule,MapUtil,List,Enumerator,T,SC$3,Router,Var$1,View$1,JS,Arrays,Object,EventTarget,Node,Dictionary,DomUtility,Elt,EltUpdater,Numeric,LazyExtensionsProxy,LazyRecord,HtmlModule,attr,Page,T$1,Concurrency,Route,SC$4,BalancedTree,Tree,Pair,Utils,Common,EditFormParams,Templating,Runtime,Server,TemplateInstance,ProviderBuilder,Handler,AttrModule,WindowOrWorkerGlobalScope,Abbrev,Fresh,RouterOperators,SC$5,HashSet,SC$6,Docs,ConcreteVar,Snap,Updates,DocElemNode,AttrProxy,AsyncBody,Error,NonStandardPromiseRejectionException,Router$1,PathUtil,Strings,SC$7,List$1,System,Guid,Attrs,Client$1,List$2,DictionaryUtil,Prepare,Slice,KeyCollection,CharacterData,An,Settings,Mailbox,CT,Attrs$1,Dyn,InvalidOperationException,Scheduler,OperationCanceledException,CancellationTokenSource,FromView,CheckedInput,Array,DynamicAttrNode,SC$8,SC$9,Docs$1,RunState,NodeSet,Anims,SC$10,StringEncoding,Char,SC$11,AppendList,HashSetUtil,SC$12,Easing,HashSet$1,Queue,DomNodes,String,SC$13,FormatException,console,IntelliFactory,Runtime$1,JSON,Number,$,Math,Date,String$1;
  Global=self;
  PeopleClient=Global.PeopleClient=Global.PeopleClient||{};
  App=PeopleClient.App=PeopleClient.App||{};
@@ -382,7 +382,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  SC$1=Global.StartupCode$PeopleClient$Model=Global.StartupCode$PeopleClient$Model||{};
  ClientSideJson=WebSharper.ClientSideJson=WebSharper.ClientSideJson||{};
  Provider=ClientSideJson.Provider=ClientSideJson.Provider||{};
- PersonEditingModule=PeopleClient.PersonEditingModule=PeopleClient.PersonEditingModule||{};
+ PersonEditorStateModule=PeopleClient.PersonEditorStateModule=PeopleClient.PersonEditorStateModule||{};
  Action=Mvu.Action=Mvu.Action||{};
  Collections=WebSharper.Collections=WebSharper.Collections||{};
  FSharpMap=Collections.FSharpMap=Collections.FSharpMap||{};
@@ -485,6 +485,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Dyn=Attrs$1.Dyn=Attrs$1.Dyn||{};
  InvalidOperationException=WebSharper.InvalidOperationException=WebSharper.InvalidOperationException||{};
  Scheduler=Concurrency.Scheduler=Concurrency.Scheduler||{};
+ OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
  CancellationTokenSource=WebSharper.CancellationTokenSource=WebSharper.CancellationTokenSource||{};
  FromView=UI.FromView=UI.FromView||{};
  CheckedInput=UI.CheckedInput=UI.CheckedInput||{};
@@ -497,7 +498,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  NodeSet=Docs$1.NodeSet=Docs$1.NodeSet||{};
  Anims=UI.Anims=UI.Anims||{};
  SC$10=Global.StartupCode$WebSharper_UI$Doc_Proxy=Global.StartupCode$WebSharper_UI$Doc_Proxy||{};
- OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
  StringEncoding=Sitelets.StringEncoding=Sitelets.StringEncoding||{};
  Char=WebSharper.Char=WebSharper.Char||{};
  SC$11=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
@@ -680,7 +680,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:((Provider.DecodeArray(PeopleClient_JsonDecoder.j))())(res),
     $1:gotoList
    };
-  })):message.$==3?(m=PersonEditingModule.TryToData(0,state.Editing),m!=null&&m.$==1?Update.DispatchAjax({
+  })):message.$==3?(m=PersonEditorStateModule.TryToData(0,state.Editing),m!=null&&m.$==1?Update.DispatchAjax({
    $:2,
    $0:m.$0
   },function()
@@ -702,7 +702,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     Editing:state.Editing,
     Deleting:state.Deleting
    }
-  }):message.$==4?(m$1=PersonEditingModule.TryToData(message.$0,state.Editing),m$1!=null&&m$1.$==1?Update.DispatchAjax({
+  }):message.$==4?(m$1=PersonEditorStateModule.TryToData(message.$0,state.Editing),m$1!=null&&m$1.$==1?Update.DispatchAjax({
    $:3,
    $0:m$1.$0
   },function()
@@ -773,7 +773,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     Page:page,
     Editing:page.$==2?(o=(o$1=Map.TryFind(page.$0,people$1),o$1==null?null:{
      $:1,
-     $0:PersonEditingModule.OfData(o$1.$0)
+     $0:PersonEditorStateModule.OfData(o$1.$0)
     }),o==null?state.Editing:o.$0):state.Editing,
     Deleting:null
    }
@@ -808,7 +808,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    Page:{
     $:1
    },
-   Editing:PersonEditingModule.Init(),
+   Editing:PersonEditorStateModule.Init(),
    Deleting:state.Deleting
   }:page.$==2?(pid=page.$0,{
    People:state.People,
@@ -820,7 +820,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    },
    Editing:(o=(o$1=Map.TryFind(pid,state.People),o$1==null?null:{
     $:1,
-    $0:PersonEditingModule.OfData(o$1.$0)
+    $0:PersonEditorStateModule.OfData(o$1.$0)
    }),o==null?state.Editing:o.$0),
    Deleting:state.Deleting
   }):{
@@ -893,34 +893,37 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     {
      return Concurrency.TryWith(Concurrency.Delay(function()
      {
-      var b$1;
-      function f()
+      return Concurrency.Bind(Concurrency.Sleep(1000),function()
       {
-       var e,$1,$2;
-       return(e={
-        $:1,
-        $0:Runtime$1.DeleteEmptyFields({
-         DefaultAllows:($1=null,$1?$1.$0:void 0),
-         EndPoint:($2={
-          $:1,
-          $0:endpoint
-         },$2?$2.$0:void 0)
-        },["DefaultAllows","EndPoint"])
-       },RouterModule.FetchWith({
-        $:1,
-        $0:"https://peopleapi.websharper.com"
-       },{},Update.route(),e)).then(function(a)
+       var b$1;
+       function f()
        {
-        return a.json();
+        var e,$1,$2;
+        return(e={
+         $:1,
+         $0:Runtime$1.DeleteEmptyFields({
+          DefaultAllows:($1=null,$1?$1.$0:void 0),
+          EndPoint:($2={
+           $:1,
+           $0:endpoint
+          },$2?$2.$0:void 0)
+         },["DefaultAllows","EndPoint"])
+        },RouterModule.FetchWith({
+         $:1,
+         $0:"https://peopleapi.websharper.com"
+        },{},Update.route(),e)).then(function(a)
+        {
+         return a.json();
+        });
+       }
+       return Concurrency.Bind(Promise.AsAsync((b$1=null,new Global.Promise(function($1)
+       {
+        $1(f());
+       }))),function(a)
+       {
+        dispatch(parseSuccess(a));
+        return Concurrency.Zero();
        });
-      }
-      return Concurrency.Bind(Promise.AsAsync((b$1=null,new Global.Promise(function($1)
-      {
-       $1(f());
-      }))),function(a)
-      {
-       dispatch(parseSuccess(a));
-       return Concurrency.Zero();
       });
      }),function(a)
      {
@@ -1154,7 +1157,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    Page:{
     $:0
    },
-   Editing:PersonEditingModule.Init(),
+   Editing:PersonEditorStateModule.Init(),
    Deleting:null
   };
  };
@@ -1324,11 +1327,11 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return(new Global.Date(x)).toISOString();
  });
- PersonEditingModule.TryToData=function(id,p)
+ PersonEditorStateModule.TryToData=function(id,p)
  {
   var m,$1,$2,$3;
-  m=PersonEditingModule.TryParseDate(p.Born);
-  return m!=null&&m.$==1?($1=p.HasDied,($2=PersonEditingModule.TryParseDate(p.Died),($1?$2==null||($3=[$2,$1],false):($3=[$2,$1],false))?null:{
+  m=PersonEditorStateModule.TryParseDate(p.Born);
+  return m!=null&&m.$==1?($1=p.HasDied,($2=PersonEditorStateModule.TryParseDate(p.Died),($1?$2==null||($3=[$2,$1],false):($3=[$2,$1],false))?null:{
    $:1,
    $0:{
     id:id,
@@ -1339,23 +1342,23 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }
   })):null;
  };
- PersonEditingModule.OfData=function(p)
+ PersonEditorStateModule.OfData=function(p)
  {
   var m;
   return{
    FirstName:p.firstName,
    LastName:p.lastName,
-   Born:PersonEditingModule.DateToString(p.born),
+   Born:PersonEditorStateModule.DateToString(p.born),
    HasDied:p.died!=null,
-   Died:(m=p.died,m!=null&&m.$==1?PersonEditingModule.DateToString(m.$0):"")
+   Died:(m=p.died,m!=null&&m.$==1?PersonEditorStateModule.DateToString(m.$0):"")
   };
  };
- PersonEditingModule.Init=function()
+ PersonEditorStateModule.Init=function()
  {
   SC$1.$cctor();
   return SC$1.Init;
  };
- PersonEditingModule.TryParseDate=function(s)
+ PersonEditorStateModule.TryParseDate=function(s)
  {
   var d;
   d=new Global.Date(s);
@@ -1364,7 +1367,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    $0:d.getTime()
   };
  };
- PersonEditingModule.DateToString=function(date)
+ PersonEditorStateModule.DateToString=function(date)
  {
   return((((Runtime$1.Curried(function($1,$2,$3,$4)
   {
@@ -4181,6 +4184,34 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    },c.ct));
   });
  };
+ Concurrency.Sleep=function(ms)
+ {
+  return function(c)
+  {
+   var pending,creg;
+   pending=void 0;
+   creg=void 0;
+   pending=Global.setTimeout(function()
+   {
+    creg.Dispose();
+    Concurrency.scheduler().Fork(function()
+    {
+     c.k({
+      $:0,
+      $0:null
+     });
+    });
+   },ms);
+   creg=Concurrency.Register(c.ct,function()
+   {
+    Global.clearTimeout(pending);
+    Concurrency.scheduler().Fork(function()
+    {
+     Concurrency.cancel(c);
+    });
+   });
+  };
+ };
  Concurrency.Zero=function()
  {
   SC$7.$cctor();
@@ -4209,6 +4240,28 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    else
     r(c);
   };
+ };
+ Concurrency.Register=function(ct,callback)
+ {
+  var i;
+  return ct===Concurrency.noneCT()?{
+   Dispose:function()
+   {
+    return null;
+   }
+  }:(i=ct.r.push(callback)-1,{
+   Dispose:function()
+   {
+    return Arrays.set(ct.r,i,Global.ignore);
+   }
+  });
+ };
+ Concurrency.cancel=function(c)
+ {
+  c.k({
+   $:2,
+   $0:new OperationCanceledException.New(c.ct)
+  });
  };
  Concurrency.FromContinuations=function(subscribe)
  {
@@ -4265,17 +4318,15 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   console.log("WebSharper: Uncaught asynchronous exception",e);
  };
- Concurrency.cancel=function(c)
- {
-  c.k({
-   $:2,
-   $0:new OperationCanceledException.New(c.ct)
-  });
- };
  Concurrency.scheduler=function()
  {
   SC$7.$cctor();
   return SC$7.scheduler;
+ };
+ Concurrency.noneCT=function()
+ {
+  SC$7.$cctor();
+  return SC$7.noneCT;
  };
  Concurrency.Return=function(x)
  {
@@ -7133,6 +7184,18 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   this.idle=true;
   this.robin=[];
  },Scheduler);
+ OperationCanceledException=WebSharper.OperationCanceledException=Runtime$1.Class({},Error,OperationCanceledException);
+ OperationCanceledException.New=Runtime$1.Ctor(function(ct)
+ {
+  OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
+ },OperationCanceledException);
+ OperationCanceledException.New$1=Runtime$1.Ctor(function(message,inner,ct)
+ {
+  this.message=message;
+  this.inner=inner;
+  Object.setPrototypeOf(this,OperationCanceledException.prototype);
+  this.ct=ct;
+ },OperationCanceledException);
  CancellationTokenSource=WebSharper.CancellationTokenSource=Runtime$1.Class({},Obj,CancellationTokenSource);
  CancellationTokenSource.New=Runtime$1.Ctor(function()
  {
@@ -7805,18 +7868,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$10.$cctor=Global.ignore;
   SC$10.BatchUpdatesEnabled=true;
  };
- OperationCanceledException=WebSharper.OperationCanceledException=Runtime$1.Class({},Error,OperationCanceledException);
- OperationCanceledException.New=Runtime$1.Ctor(function(ct)
- {
-  OperationCanceledException.New$1.call(this,"The operation was canceled.",null,ct);
- },OperationCanceledException);
- OperationCanceledException.New$1=Runtime$1.Ctor(function(message,inner,ct)
- {
-  this.message=message;
-  this.inner=inner;
-  Object.setPrototypeOf(this,OperationCanceledException.prototype);
-  this.ct=ct;
- },OperationCanceledException);
  Router$1.New=function(Parse,Segment)
  {
   return{
