@@ -35,7 +35,7 @@ module Update =
 
     let route = Router.Infer<EndPoint>()
 
-    let DispatchAjax (endpoint: ApiEndPoint) (parseSuccess: string -> Message) =
+    let DispatchAjax (endpoint: ApiEndPoint) (parseSuccess: obj -> Message) =
         // We use UpdateModel because SetModel would "overwrite" changes
         // previously done with SetModel.
         UpdateModel (fun state -> { state with Refreshing = true })
@@ -48,20 +48,20 @@ module Update =
                     let! ep =
                         EndPoint.Api (Cors.Of endpoint)
                         |> Router.FetchWith (Some BaseUrl) (RequestOptions()) route
-                    return! ep.Text()
+                    return! ep.Json()
                 }
                 dispatch (parseSuccess res)
             with e ->
                 dispatch (Error e.Message)
         })
 
-    let UpdatePerson (message: PersonUpdateMessage) (state: PersonEditing) =
+    let UpdatePerson (message: PersonUpdateMessage) (person: PersonEditing) =
         match message with
-        | SetFirstName s -> { state with FirstName = s }
-        | SetLastName s -> { state with LastName = s }
-        | SetBorn s -> { state with Born = s }
-        | SetDied s -> { state with Died = s }
-        | SetHasDied b -> { state with HasDied = b }
+        | SetFirstName s -> { person with FirstName = s }
+        | SetLastName s -> { person with LastName = s }
+        | SetBorn s -> { person with Born = s }
+        | SetDied s -> { person with Died = s }
+        | SetHasDied b -> { person with HasDied = b }
 
     let Goto (page: Page) (state: State) : State =
         match page with
@@ -70,7 +70,7 @@ module Update =
         | Creating ->
             { state with
                 Page = Creating
-                Editing = State.Init.Editing
+                Editing = PersonEditing.Init
             }
         | Editing pid ->
             { state with
@@ -81,7 +81,7 @@ module Update =
                     |> Option.defaultValue state.Editing
             }
 
-    let UpdateApp (message: Message) (state: State) =
+    let UpdateApp (message: Message) (state: State) : Action<Message, State> =
         match message with
         | Goto page ->
             UpdateModel (Goto page)
@@ -89,7 +89,7 @@ module Update =
             SetModel { state with Editing = UpdatePerson msg state.Editing }
         | RefreshList gotoList ->
             DispatchAjax ApiEndPoint.GetPeople
-                (fun res -> ListRefreshed (Json.Deserialize res, gotoList))
+                (fun res -> ListRefreshed (Json.Decode res, gotoList))
         | SubmitCreatePerson ->
             match PersonEditing.TryToData 0 state.Editing with
             | None ->

@@ -1,5 +1,6 @@
 namespace PeopleClient
 
+open System
 open WebSharper
 open WebSharper.JavaScript
 open PeopleApi.App.Model
@@ -11,6 +12,7 @@ type Page =
     | [<EndPoint "/create">] Creating
     | [<EndPoint "/edit">] Editing of PersonId
 
+/// Contents of the fields of the Creating and Editing pages.
 type PersonEditing =
     {
         FirstName: string
@@ -20,6 +22,7 @@ type PersonEditing =
         Died: string
     }
 
+/// State of the full client app.
 type State =
     {
         People: Map<PersonId, PersonData>
@@ -33,21 +36,17 @@ type State =
 [<JavaScript>]
 module PersonEditing =
 
-    let DateToString (date: System.DateTime) =
+    let DateToString (date: DateTime) : string =
         sprintf "%04i-%02i-%02i" date.Year date.Month date.Day
 
-    let TryParseDate (s: string) =
+    let TryParseDate (s: string) : option<DateTime> =
         let d = JavaScript.Date(s)
         if Number.IsNaN (d.GetTime()) then
             None
         else
             Some d.Self
 
-    let IsValid (p: PersonEditing) =
-        Option.isSome (TryParseDate p.Born)
-        && (not p.HasDied || Option.isSome (TryParseDate p.Died))
-
-    let OfData (p: PersonData) =
+    let OfData (p: PersonData) : PersonEditing =
         {
             FirstName = p.firstName
             LastName = p.lastName
@@ -56,7 +55,7 @@ module PersonEditing =
             Died = match p.died with None -> "" | Some d -> DateToString d
         }
 
-    let TryToData (id: PersonId) (p: PersonEditing) =
+    let TryToData (id: PersonId) (p: PersonEditing) : option<PersonData> =
         match TryParseDate p.Born with
         | None -> None
         | Some born ->
@@ -71,22 +70,24 @@ module PersonEditing =
                     died = if hasDied then died else None
                 }
 
+    let Init =
+        {
+            FirstName = ""
+            LastName = ""
+            Born = ""
+            HasDied = false
+            Died = ""
+        }
+
 [<JavaScript>]
 module State =
 
-    let Init =
+    let Init : State =
         {
             People = Map.empty
             Refreshing = true
             Error = None
             Page = PeopleList
-            Editing =
-                {
-                    FirstName = ""
-                    LastName = ""
-                    Born = ""
-                    HasDied = false
-                    Died = ""
-                }
+            Editing = PersonEditing.Init
             Deleting = None
         }
