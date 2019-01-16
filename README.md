@@ -1,4 +1,4 @@
-# WebSharper CRUD API Sample
+# WebSharper CRUD API Sample [![Build status](https://ci.appveyor.com/api/projects/status/e2u4kapxmik25ixa?svg=true)](https://ci.appveyor.com/project/IntelliFactory/peopleclient)
 
 This project demonstrates how to write a pure client-side [WebSharper](https://websharper.com) application that consumes an HTTP API also written with WebSharper. [This project](https://github.com/websharper-samples/PeopleAPI) implements the server for this HTTP API.
 
