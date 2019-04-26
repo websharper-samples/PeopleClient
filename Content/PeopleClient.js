@@ -2,7 +2,7 @@
 //
 // This file is part of WebSharper
 //
-// Copyright (c) 2008-2016 IntelliFactory
+// Copyright (c) 2008-2018 IntelliFactory
 //
 // Licensed under the Apache License, Version 2.0 (the "License"); you
 // may not use this file except in compliance with the License.  You may
@@ -332,7 +332,8 @@ if (!console) {
         trace: ignore,
         warn: ignore
     }
-};
+}
+;
 (function () {
     var lastTime = 0;
     var vendors = ['webkit', 'moz'];
@@ -358,11 +359,15 @@ if (!console) {
         };
 }());
 ;
+/* https://github.com/jonathantneal/closest */
+(function(w,p){p=w.Element.prototype
+if(!p.matches){p.matches=p.msMatchesSelector||function(s){var m=(this.document||this.ownerDocument).querySelectorAll(s);for(var i=0;m[i]&&m[i]!==e;++i);return!!m[i]}}
+if(!p.closest){p.closest=function(s){var e=this;while(e&&e.nodeType==1){if(e.matches(s))return e;e=e.parentNode}return null}}})(this);
 var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n:n}function f(n){return o.lastIndex=0,o.test(n)?'"'+n.replace(o,function(n){var t=s[n];return typeof t=="string"?t:"\\u"+("0000"+n.charCodeAt(0).toString(16)).slice(-4)})+'"':'"'+n+'"'}function r(i,e){var s,l,h,a,v=n,c,o=e[i];o&&typeof o=="object"&&typeof o.toJSON=="function"&&(o=o.toJSON(i)),typeof t=="function"&&(o=t.call(e,i,o));switch(typeof o){case"string":return f(o);case"number":return isFinite(o)?String(o):"null";case"boolean":case"null":return String(o);case"object":if(!o)return"null";if(n+=u,c=[],Object.prototype.toString.apply(o)==="[object Array]"){for(a=o.length,s=0;s<a;s+=1)c[s]=r(s,o)||"null";return h=c.length===0?"[]":n?"[\n"+n+c.join(",\n"+n)+"\n"+v+"]":"["+c.join(",")+"]",n=v,h}if(t&&typeof t=="object")for(a=t.length,s=0;s<a;s+=1)typeof t[s]=="string"&&(l=t[s],h=r(l,o),h&&c.push(f(l)+(n?": ":":")+h));else for(l in o)Object.prototype.hasOwnProperty.call(o,l)&&(h=r(l,o),h&&c.push(f(l)+(n?": ":":")+h));return h=c.length===0?"{}":n?"{\n"+n+c.join(",\n"+n)+"\n"+v+"}":"{"+c.join(",")+"}",n=v,h}}typeof Date.prototype.toJSON!="function"&&(Date.prototype.toJSON=function(){return isFinite(this.valueOf())?this.getUTCFullYear()+"-"+i(this.getUTCMonth()+1)+"-"+i(this.getUTCDate())+"T"+i(this.getUTCHours())+":"+i(this.getUTCMinutes())+":"+i(this.getUTCSeconds())+"Z":null},String.prototype.toJSON=Number.prototype.toJSON=Boolean.prototype.toJSON=function(){return this.valueOf()});var e=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,o=/[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,n,u,s={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},t;typeof JSON.stringify!="function"&&(JSON.stringify=function(i,f,e){var o;if(n="",u="",typeof e=="number")for(o=0;o<e;o+=1)u+=" ";else typeof e=="string"&&(u=e);if(t=f,f&&typeof f!="function"&&(typeof f!="object"||typeof f.length!="number"))throw new Error("JSON.stringify");return r("",{"":i})}),typeof JSON.parse!="function"&&(JSON.parse=function(n,t){function r(n,i){var f,e,u=n[i];if(u&&typeof u=="object")for(f in u)Object.prototype.hasOwnProperty.call(u,f)&&(e=r(u,f),e!==undefined?u[f]=e:delete u[f]);return t.call(n,i,u)}var i;if(n=String(n),e.lastIndex=0,e.test(n)&&(n=n.replace(e,function(n){return"\\u"+("0000"+n.charCodeAt(0).toString(16)).slice(-4)})),/^[\],:{}\s]*$/.test(n.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,"@").replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,"]").replace(/(?:^|:|,)(?:\s*\[)+/g,"")))return i=eval("("+n+")"),typeof t=="function"?r({"":i},""):i;throw new SyntaxError("JSON.parse");})}();;
 (function()
 {
  "use strict";
- var Global,PeopleClient,App,WebSharper,Operators,Mvu,App$1,StateModule,Update,View,PeopleClient_JsonEncoder,PeopleClient_JsonDecoder,PeopleClient_Router,PeopleClient_Templates,Obj,Pager,SC$1,ClientSideJson,Provider,PersonEditorStateModule,Action,Collections,FSharpMap,Seq,Map,Option,CreatePerson,EditPerson,PeopleList,UI,Var,SC$2,Client,Templates,Doc,JavaScript,Pervasives,Ref,Unchecked,Lazy,Promise,Sitelets,RouterModule,MapUtil,List,Enumerator,T,SC$3,Router,Var$1,View$1,JS,Arrays,Object,EventTarget,Node,Dictionary,DomUtility,Elt,EltUpdater,Numeric,LazyExtensionsProxy,LazyRecord,HtmlModule,attr,Page,T$1,Concurrency,Route,SC$4,BalancedTree,Tree,Pair,Utils,Common,EditFormParams,Templating,Runtime,Server,TemplateInstance,ProviderBuilder,Handler,AttrModule,WindowOrWorkerGlobalScope,Abbrev,Fresh,RouterOperators,SC$5,HashSet,SC$6,Docs,ConcreteVar,Snap,Updates,DocElemNode,AttrProxy,AsyncBody,Error,NonStandardPromiseRejectionException,Router$1,PathUtil,Strings,SC$7,List$1,System,Guid,Attrs,Client$1,List$2,DictionaryUtil,Prepare,Slice,KeyCollection,CharacterData,An,Settings,Mailbox,CT,Attrs$1,Dyn,InvalidOperationException,Scheduler,OperationCanceledException,CancellationTokenSource,FromView,CheckedInput,Array,DynamicAttrNode,SC$8,SC$9,Docs$1,RunState,NodeSet,Anims,SC$10,StringEncoding,Char,SC$11,AppendList,HashSetUtil,SC$12,Easing,HashSet$1,Queue,DomNodes,String,SC$13,FormatException,console,IntelliFactory,Runtime$1,JSON,Number,$,Math,Date,String$1;
+ var Global,PeopleClient,App,WebSharper,Operators,Mvu,App$1,StateModule,Update,View,PeopleClient_JsonEncoder,PeopleClient_JsonDecoder,PeopleClient_Router,PeopleClient_Templates,Obj,Pager,SC$1,ClientSideJson,Provider,PersonEditorStateModule,Action,Collections,FSharpMap,Seq,Map,Option,CreatePerson,EditPerson,PeopleList,UI,Var,SC$2,Client,Templates,Doc,JavaScript,Pervasives,Ref,Unchecked,Lazy,Promise,Sitelets,RouterModule,MapUtil,List,Enumerator,T,SC$3,Router,Var$1,View$1,JS,Arrays,Object,EventTarget,Node,Dictionary,Elt,EltUpdater,Numeric,LazyExtensionsProxy,LazyRecord,HtmlModule,attr,Page,T$1,Concurrency,Route,SC$4,BalancedTree,Tree,Pair,Utils,Common,EditFormParams,Templating,Runtime,Server,TemplateInstance,ProviderBuilder,Handler,AttrModule,WindowOrWorkerGlobalScope,Abbrev,Fresh,RouterOperators,SC$5,HashSet,Docs,ConcreteVar,Snap,Updates,DocElemNode,AttrProxy,AsyncBody,Error,NonStandardPromiseRejectionException,Router$1,PathUtil,Strings,SC$6,System,Guid,List$1,Attrs,DomUtility,List$2,DictionaryUtil,Prepare,Slice,KeyCollection,CharacterData,An,Settings,Mailbox,CT,Attrs$1,Dyn,InvalidOperationException,Scheduler,OperationCanceledException,CancellationTokenSource,FromView,Array,DynamicAttrNode,TemplateInitializer,SC$7,SC$8,Docs$1,RunState,NodeSet,Anims,SC$9,CheckedInput,StringEncoding,Char,SC$10,SC$11,AppendList,HashSetUtil,SC$12,Easing,HashSet$1,BindVar,String,Queue,ValueCollection,DomNodes,SC$13,FormatException,console,IntelliFactory,Runtime$1,JSON,Number,Math,Date,String$1;
  Global=self;
  PeopleClient=Global.PeopleClient=Global.PeopleClient||{};
  App=PeopleClient.App=PeopleClient.App||{};
@@ -420,7 +425,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  EventTarget=Global.EventTarget;
  Node=Global.Node;
  Dictionary=Collections.Dictionary=Collections.Dictionary||{};
- DomUtility=UI.DomUtility=UI.DomUtility||{};
  Elt=UI.Elt=UI.Elt||{};
  EltUpdater=Client.EltUpdater=Client.EltUpdater||{};
  Numeric=WebSharper.Numeric=WebSharper.Numeric||{};
@@ -452,7 +456,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  RouterOperators=Sitelets.RouterOperators=Sitelets.RouterOperators||{};
  SC$5=Global.StartupCode$WebSharper_UI$Templates=Global.StartupCode$WebSharper_UI$Templates||{};
  HashSet=Collections.HashSet=Collections.HashSet||{};
- SC$6=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
  Docs=UI.Docs=UI.Docs||{};
  ConcreteVar=UI.ConcreteVar=UI.ConcreteVar||{};
  Snap=UI.Snap=UI.Snap||{};
@@ -465,12 +468,12 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Router$1=Sitelets.Router=Sitelets.Router||{};
  PathUtil=Sitelets.PathUtil=Sitelets.PathUtil||{};
  Strings=WebSharper.Strings=WebSharper.Strings||{};
- SC$7=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
- List$1=Collections.List=Collections.List||{};
+ SC$6=Global.StartupCode$WebSharper_Main$Concurrency=Global.StartupCode$WebSharper_Main$Concurrency||{};
  System=Global.System=Global.System||{};
  Guid=System.Guid=System.Guid||{};
+ List$1=Collections.List=Collections.List||{};
  Attrs=UI.Attrs=UI.Attrs||{};
- Client$1=Runtime.Client=Runtime.Client||{};
+ DomUtility=UI.DomUtility=UI.DomUtility||{};
  List$2=Sitelets.List=Sitelets.List||{};
  DictionaryUtil=Collections.DictionaryUtil=Collections.DictionaryUtil||{};
  Prepare=Templates.Prepare=Templates.Prepare||{};
@@ -488,27 +491,31 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  OperationCanceledException=WebSharper.OperationCanceledException=WebSharper.OperationCanceledException||{};
  CancellationTokenSource=WebSharper.CancellationTokenSource=WebSharper.CancellationTokenSource||{};
  FromView=UI.FromView=UI.FromView||{};
- CheckedInput=UI.CheckedInput=UI.CheckedInput||{};
  Array=UI.Array=UI.Array||{};
  DynamicAttrNode=UI.DynamicAttrNode=UI.DynamicAttrNode||{};
- SC$8=Global.StartupCode$WebSharper_UI$Abbrev=Global.StartupCode$WebSharper_UI$Abbrev||{};
- SC$9=Global.StartupCode$WebSharper_Sitelets$Router=Global.StartupCode$WebSharper_Sitelets$Router||{};
+ TemplateInitializer=Server.TemplateInitializer=Server.TemplateInitializer||{};
+ SC$7=Global.StartupCode$WebSharper_UI$Abbrev=Global.StartupCode$WebSharper_UI$Abbrev||{};
+ SC$8=Global.StartupCode$WebSharper_Sitelets$Router=Global.StartupCode$WebSharper_Sitelets$Router||{};
  Docs$1=Client.Docs=Client.Docs||{};
  RunState=Docs$1.RunState=Docs$1.RunState||{};
  NodeSet=Docs$1.NodeSet=Docs$1.NodeSet||{};
  Anims=UI.Anims=UI.Anims||{};
- SC$10=Global.StartupCode$WebSharper_UI$Doc_Proxy=Global.StartupCode$WebSharper_UI$Doc_Proxy||{};
+ SC$9=Global.StartupCode$WebSharper_UI$Doc_Proxy=Global.StartupCode$WebSharper_UI$Doc_Proxy||{};
+ CheckedInput=UI.CheckedInput=UI.CheckedInput||{};
  StringEncoding=Sitelets.StringEncoding=Sitelets.StringEncoding||{};
  Char=WebSharper.Char=WebSharper.Char||{};
+ SC$10=Global.StartupCode$WebSharper_UI$DomUtility=Global.StartupCode$WebSharper_UI$DomUtility||{};
  SC$11=Global.StartupCode$WebSharper_UI$Animation=Global.StartupCode$WebSharper_UI$Animation||{};
  AppendList=UI.AppendList=UI.AppendList||{};
  HashSetUtil=Collections.HashSetUtil=Collections.HashSetUtil||{};
  SC$12=Global.StartupCode$WebSharper_UI$Attr_Client=Global.StartupCode$WebSharper_UI$Attr_Client||{};
  Easing=UI.Easing=UI.Easing||{};
  HashSet$1=Abbrev.HashSet=Abbrev.HashSet||{};
- Queue=WebSharper.Queue=WebSharper.Queue||{};
- DomNodes=Docs$1.DomNodes=Docs$1.DomNodes||{};
+ BindVar=UI.BindVar=UI.BindVar||{};
  String=UI.String=UI.String||{};
+ Queue=WebSharper.Queue=WebSharper.Queue||{};
+ ValueCollection=Collections.ValueCollection=Collections.ValueCollection||{};
+ DomNodes=Docs$1.DomNodes=Docs$1.DomNodes||{};
  SC$13=Global.StartupCode$WebSharper_UI$AppendList=Global.StartupCode$WebSharper_UI$AppendList||{};
  FormatException=WebSharper.FormatException=WebSharper.FormatException||{};
  console=Global.console;
@@ -516,7 +523,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Runtime$1=IntelliFactory&&IntelliFactory.Runtime;
  JSON=Global.JSON;
  Number=Global.Number;
- $=Global.jQuery;
  Math=Global.Math;
  Date=Global.Date;
  String$1=Global.String;
@@ -1621,27 +1627,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }
   };
  };
- Seq.append=function(s1,s2)
- {
-  return{
-   GetEnumerator:function()
-   {
-    var e1,first;
-    e1=Enumerator.Get(s1);
-    first=[true];
-    return new T.New(e1,null,function(x)
-    {
-     var x$1;
-     return x.s.MoveNext()?(x.c=x.s.Current(),true):(x$1=x.s,!Unchecked.Equals(x$1,null)?x$1.Dispose():void 0,x.s=null,first[0]&&(first[0]=false,x.s=Enumerator.Get(s2),x.s.MoveNext()?(x.c=x.s.Current(),true):(x.s.Dispose(),x.s=null,false)));
-    },function(x)
-    {
-     var x$1;
-     x$1=x.s;
-     !Unchecked.Equals(x$1,null)?x$1.Dispose():void 0;
-    });
-   }
-  };
- };
  Seq.tryPick=function(f,s)
  {
   var e,r;
@@ -1677,6 +1662,27 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    if(typeof e=="object"&&"Dispose"in e)
     e.Dispose();
   }
+ };
+ Seq.append=function(s1,s2)
+ {
+  return{
+   GetEnumerator:function()
+   {
+    var e1,first;
+    e1=Enumerator.Get(s1);
+    first=[true];
+    return new T.New(e1,null,function(x)
+    {
+     var x$1;
+     return x.s.MoveNext()?(x.c=x.s.Current(),true):(x$1=x.s,!Unchecked.Equals(x$1,null)?x$1.Dispose():void 0,x.s=null,first[0]&&(first[0]=false,x.s=Enumerator.Get(s2),x.s.MoveNext()?(x.c=x.s.Current(),true):(x.s.Dispose(),x.s=null,false)));
+    },function(x)
+    {
+     var x$1;
+     x$1=x.s;
+     !Unchecked.Equals(x$1,null)?x$1.Dispose():void 0;
+    });
+   }
+  };
  };
  Seq.indexed=function(s)
  {
@@ -1938,22 +1944,22 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  PeopleList.PersonRow=function(dispatch,state,pid,person)
  {
-  var b,D,t,E,t$1,p,i;
-  return(b=(D=Common.DisabledWhenRefreshing(state),(t=(E=Common.DisabledWhenRefreshing(state),(t$1=ProviderBuilder.Make$1().WithHole({
+  var b,D,_this,t,E,_this$1,t$1,_this$2,_this$3,_this$4,_this$5,p,i;
+  return(b=(D=Common.DisabledWhenRefreshing(state),(_this=(t=(E=Common.DisabledWhenRefreshing(state),(_this$1=(t$1=(_this$2=(_this$3=(_this$4=(_this$5=new ProviderBuilder.New$1(),(_this$5.h.push({
    $:2,
    $0:"firstname",
    $1:View$1.Map(function($1)
    {
     return $1.firstName;
    },person)
-  }).WithHole({
+  }),_this$5)),(_this$4.h.push({
    $:2,
    $0:"lastname",
    $1:View$1.Map(function($1)
    {
     return $1.lastName;
    },person)
-  }).WithHole({
+  }),_this$4)),(_this$3.h.push({
    $:2,
    $0:"born",
    $1:View$1.Map(function($1)
@@ -1962,7 +1968,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     c=$1.born;
     return(new Global.Date(c)).toLocaleDateString();
    },person)
-  }).WithHole({
+  }),_this$3)),(_this$2.h.push({
    $:2,
    $0:"died",
    $1:View$1.Map(function($1)
@@ -1971,7 +1977,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     m=$1.died;
     return m!=null&&m.$==1?(new Global.Date(m.$0)).toLocaleDateString():"";
    },person)
-  }),t$1.WithHole(Handler.EventQ2(t$1.k,"edit",function()
+  }),_this$2)),(t$1.h.push(Handler.EventQ2(t$1.k,"edit",function()
   {
    return t$1.i;
   },function()
@@ -1983,11 +1989,11 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
      $0:pid
     }
    });
-  }))).WithHole({
+  })),t$1)),(_this$1.h.push({
    $:3,
    $0:"editattr",
    $1:E
-  })),t.WithHole(Handler.EventQ2(t.k,"delete",function()
+  }),_this$1))),(t.h.push(Handler.EventQ2(t.k,"delete",function()
   {
    return t.i;
   },function()
@@ -1996,11 +2002,11 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $:5,
     $0:pid
    });
-  }))).WithHole({
+  })),t)),(_this.h.push({
    $:3,
    $0:"deleteattr",
    $1:D
-  })),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],PeopleClient_Templates.row(p[0])),(b.i=i,i)))).get_Doc();
+  }),_this))),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],PeopleClient_Templates.row(p[0])),b.i=i,i))).get_Doc();
  };
  Var=UI.Var=Runtime$1.Class({},Obj,Var);
  Var.New=Runtime$1.Ctor(function()
@@ -2039,7 +2045,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Templates.LoadNestedTemplates=function(root,baseName)
  {
-  var loadedTpls,rawTpls,wsTemplates,i,$1,node,name,wsChildrenTemplates,i$1,$2,node$1,name$1,els,instantiated;
+  var loadedTpls,rawTpls,wsTemplates,i,$1,node,name,wsChildrenTemplates,i$1,$2,node$1,name$1,instantiated;
   function prepareTemplate(name$2)
   {
    var m,o;
@@ -2058,10 +2064,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
      m[0]?(instantiated.Add(name$2),rawTpls.Remove(name$2),Templates.PrepareTemplateStrict(baseName,{
       $:1,
       $0:name$2
-     },m[1][0],{
-      $:1,
-      $0:m[1][1]
-     },{
+     },m[1],{
       $:1,
       $0:prepareTemplate
      })):console.warn(instantiated.Contains(name$2)?"Encountered loop when instantiating "+name$2:"Local template does not exist: "+name$2);
@@ -2074,14 +2077,14 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    node=wsTemplates[i];
    name=node.getAttribute("ws-template").toLowerCase();
    node.removeAttribute("ws-template");
-   rawTpls.set_Item(name,[[node],Templates.FakeRootSingle(node)]);
+   rawTpls.set_Item(name,Templates.FakeRootSingle(node));
   }
   wsChildrenTemplates=root.querySelectorAll("[ws-children-template]");
   for(i$1=0,$2=wsChildrenTemplates.length-1;i$1<=$2;i$1++){
    node$1=wsChildrenTemplates[i$1];
    name$1=node$1.getAttribute("ws-children-template").toLowerCase();
    node$1.removeAttribute("ws-children-template");
-   rawTpls.set_Item(name$1,(els=DomUtility.ChildrenArray(node$1),[els,Templates.FakeRoot(els)]));
+   rawTpls.set_Item(name$1,Templates.FakeRoot(node$1));
   }
   instantiated=new HashSet.New$3();
   while(rawTpls.count>0)
@@ -2109,22 +2112,25 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Templates.FakeRootSingle=function(el)
  {
-  var m,m$1,n;
+  var m,m$1,n,fakeroot;
   el.removeAttribute("ws-template");
   m=el.getAttribute("ws-replace");
   m===null?void 0:(el.removeAttribute("ws-replace"),m$1=el.parentNode,Unchecked.Equals(m$1,null)?void 0:(n=self.document.createElement(el.tagName),n.setAttribute("ws-replace",m),m$1.replaceChild(n,el)));
-  return Templates.FakeRoot([el]);
- };
- Templates.FakeRoot=function(els)
- {
-  var fakeroot,i,$1;
   fakeroot=self.document.createElement("div");
-  for(i=0,$1=els.length-1;i<=$1;i++)fakeroot.appendChild(Arrays.get(els,i));
+  fakeroot.appendChild(el);
   return fakeroot;
  };
- Templates.PrepareTemplateStrict=function(baseName,name,els,root,prepareLocalTemplate)
+ Templates.FakeRoot=function(parent)
  {
-  var fakeroot,name$1;
+  var fakeroot;
+  fakeroot=self.document.createElement("div");
+  while(parent.hasChildNodes())
+   fakeroot.appendChild(parent.firstChild);
+  return fakeroot;
+ };
+ Templates.PrepareTemplateStrict=function(baseName,name,fakeroot,prepareLocalTemplate)
+ {
+  var name$1;
   function recF(recI,$1)
   {
    var next,m,$2,x,f,name$2,p,instName,instBaseName,d,t,instance,usedHoles,mappings,attrs,i,$3,name$3,m$1,i$1,$4,n,singleTextFill,i$2,$5,n$1;
@@ -2231,12 +2237,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    var m,name$2,m$1;
    function fillHole(p,n)
    {
-    var parsed,i,$1;
+    var parsed;
     if(name$2==="title"&&fillWith.hasChildNodes())
      {
-      parsed=$.parseHTML(fillWith.textContent);
+      parsed=DomUtility.ParseHTMLIntoFakeRoot(fillWith.textContent);
       fillWith.removeChild(fillWith.firstChild);
-      for(i=0,$1=parsed.length-1;i<=$1;i++)fillWith.appendChild(Arrays.get(parsed,i));
+      while(parsed.hasChildNodes())
+       fillWith.appendChild(parsed.firstChild);
      }
     else
      null;
@@ -2244,7 +2251,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     return Prepare.fill(fillWith,p,n);
    }
    name$2=fillWith.nodeName.toLowerCase();
-   DomUtility.IterSelector(instance,"[ws-attr-holes]",function(e)
+   Templates.foreachNotPreserved(instance,"[ws-attr-holes]",function(e)
    {
     var holeAttrs,i,$1,attrName,_this;
     holeAttrs=Strings.SplitChars(e.getAttribute("ws-attr-holes"),[" "],1);
@@ -2269,13 +2276,14 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   }
   function convertElement(el)
   {
-   if(Strings.StartsWith(el.nodeName.toLowerCase(),"ws-"))
-    convertInstantiation(el);
-   else
-    {
-     Prepare.convertAttrs(el);
-     convertNodeAndSiblings(el.firstChild);
-    }
+   if(!el.hasAttribute("ws-preserve"))
+    if(Strings.StartsWith(el.nodeName.toLowerCase(),"ws-"))
+     convertInstantiation(el);
+    else
+     {
+      Prepare.convertAttrs(el);
+      convertNodeAndSiblings(el.firstChild);
+     }
   }
   function convertNodeAndSiblings(n)
   {
@@ -2285,10 +2293,9 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    return recF(1,el);
   }
-  fakeroot=root==null?Templates.FakeRoot(els):root.$0;
   name$1=(name==null?"":name.$0).toLowerCase();
   Templates.LoadedTemplateFile(baseName).set_Item(name$1,fakeroot);
-  Arrays.length(els)>0?(function(el)
+  fakeroot.hasChildNodes()?(function(el)
   {
    var m,m$1,name$2,name$3;
    while(true)
@@ -2306,7 +2313,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
          Templates.PrepareTemplateStrict(baseName,{
           $:1,
           $0:name$2
-         },DomUtility.ChildrenArray(m$1),null,null);
+         },m$1,null);
          el=el;
         }
       }
@@ -2320,20 +2327,23 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
        el=el;
       }
     }
-  }(fakeroot),convertNodeAndSiblings(Arrays.get(els,0))):void 0;
+  }(fakeroot),convertNodeAndSiblings(fakeroot.firstChild)):void 0;
+ };
+ Templates.foreachNotPreserved=function(root,selector,f)
+ {
+  DomUtility.IterSelector(root,selector,function(p)
+  {
+   if(p.closest("[ws-preserve]")==null)
+    f(p);
+  });
  };
  Templates.PrepareSingleTemplate=function(baseName,name,el)
  {
-  var root,e,r;
+  var root;
   root=Templates.FakeRootSingle(el);
-  e=[el];
-  r={
-   $:1,
-   $0:root
-  };
   return function(p)
   {
-   Templates.PrepareTemplateStrict(baseName,name,e,r,p);
+   Templates.PrepareTemplateStrict(baseName,name,root,p);
   };
  };
  Templates.NamedTemplate=function(baseName,name,fillWith)
@@ -2359,7 +2369,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Templates.ChildrenTemplate=function(el,fillWith)
  {
   var p,updates,docTreeNode,m,$1;
-  p=Templates.InlineTemplate(el,fillWith);
+  p=Templates.InlineTemplate(el,Seq.append(fillWith,Templates.GlobalHoles().get_Values()));
   updates=p[1];
   docTreeNode=p[0];
   m=docTreeNode.Els;
@@ -2451,7 +2461,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     e.Dispose();
   }
   els=DomUtility.ChildrenArray(el);
-  DomUtility.IterSelector(el,"[ws-hole]",function(p)
+  Templates.foreachNotPreserved(el,"[ws-hole]",function(p)
   {
    var m,doc,name;
    name=p.getAttribute("ws-hole");
@@ -2461,7 +2471,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    m=tryGetAsDoc(name);
    m!=null&&m.$==1?(doc=m.$0,Docs.LinkElement(p,doc.docNode),holes.push(DocElemNode.New(Attrs.Empty(p),doc.docNode,null,p,Fresh.Int(),null)),updates.push(doc.updates)):void 0;
   });
-  DomUtility.IterSelector(el,"[ws-replace]",function(e$1)
+  Templates.foreachNotPreserved(el,"[ws-replace]",function(e$1)
   {
    var m,doc,p,after,before,o;
    m=tryGetAsDoc(e$1.getAttribute("ws-replace"));
@@ -2473,7 +2483,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[before,after]
    },p,Fresh.Int(),null)),updates.push(doc.updates)):void 0;
   });
-  DomUtility.IterSelector(el,"[ws-attr]",function(e$1)
+  Templates.foreachNotPreserved(el,"[ws-attr]",function(e$1)
   {
    var name,m,o;
    name=e$1.getAttribute("ws-attr");
@@ -2490,7 +2500,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }),o]);
    m[0]?m[1].$==3?addAttr(e$1,m[1].$1):console.warn("Attribute hole filled with non-attribute data",name):void 0;
   });
-  DomUtility.IterSelector(el,"[ws-on]",function(e$1)
+  Templates.foreachNotPreserved(el,"[ws-on]",function(e$1)
   {
    addAttr(e$1,AttrProxy.Concat(Arrays.choose(function(x$1)
    {
@@ -2511,12 +2521,12 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
      $0:AttrModule.Handler(Arrays.get(a,0),m[1].$1)
     }:m[1].$==5?{
      $:1,
-     $0:AttrProxy.Handler(Arrays.get(a,0),m[1].$2)
+     $0:AttrProxy.Handler(Arrays.get(a,0),m[1].$1)
     }:(console.warn("Event hole on"+Arrays.get(a,0)+" filled with non-event data",Arrays.get(a,1)),null):null;
    },Strings.SplitChars(e$1.getAttribute("ws-on"),[" "],1))));
    e$1.removeAttribute("ws-on");
   });
-  DomUtility.IterSelector(el,"[ws-onafterrender]",function(e$1)
+  Templates.foreachNotPreserved(el,"[ws-onafterrender]",function(e$1)
   {
    var name,m,o;
    name=e$1.getAttribute("ws-onafterrender");
@@ -2532,7 +2542,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }),o]);
    m[0]?m[1].$==6?(e$1.removeAttribute("ws-onafterrender"),addAttr(e$1,AttrModule.OnAfterRender(m[1].$1))):m[1].$==7?(e$1.removeAttribute("ws-onafterrender"),addAttr(e$1,AttrModule.OnAfterRender(m[1].$1))):console.warn("onafterrender hole filled with non-onafterrender data",name):void 0;
   });
-  DomUtility.IterSelector(el,"[ws-var]",function(e$1)
+  Templates.foreachNotPreserved(el,"[ws-var]",function(e$1)
   {
    var name,m,o;
    name=e$1.getAttribute("ws-var");
@@ -2549,7 +2559,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }),o]);
    m[0]?m[1].$==8?addAttr(e$1,AttrModule.Value(m[1].$1)):m[1].$==9?addAttr(e$1,AttrModule.Checked(m[1].$1)):m[1].$==10?addAttr(e$1,AttrModule.IntValue(m[1].$1)):m[1].$==11?addAttr(e$1,AttrModule.IntValueUnchecked(m[1].$1)):m[1].$==12?addAttr(e$1,AttrModule.FloatValue(m[1].$1)):m[1].$==13?addAttr(e$1,AttrModule.FloatValueUnchecked(m[1].$1)):console.warn("Var hole filled with non-Var data",name):void 0;
   });
-  DomUtility.IterSelector(el,"[ws-attr-holes]",function(e$1)
+  Templates.foreachNotPreserved(el,"[ws-attr-holes]",function(e$1)
   {
    var re,holeAttrs,i,$4;
    re=new Global.RegExp(Templates.TextHoleRE(),"g");
@@ -2685,11 +2695,16 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }:null,$2?$2.$0:void 0)
   },["Render","El"]),Array.TreeReduce(View$1.Const(),View$1.Map2Unit,updates)];
  };
+ Templates.GlobalHoles=function()
+ {
+  SC$5.$cctor();
+  return SC$5.GlobalHoles;
+ };
  Doc=UI.Doc=Runtime$1.Class({},Obj,Doc);
  Doc.RunById=function(id,tr)
  {
   var m;
-  m=DomUtility.Doc().getElementById(id);
+  m=self.document.getElementById(id);
   Unchecked.Equals(m,null)?Operators.FailWith("invalid id: "+id):Doc.Run(m,tr);
  };
  Doc.Run=function(parent,doc)
@@ -2711,7 +2726,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   var a,a$1;
   a=AttrProxy.Concat(attr$1);
   a$1=Doc.Concat(children);
-  return Elt.New(DomUtility.CreateElement(name),a,a$1);
+  return Elt.New(self.document.createElement(name),a,a$1);
  };
  Doc.Concat=function(xs)
  {
@@ -2763,7 +2778,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return Doc.Mk({
    $:5,
-   $0:DomUtility.CreateText(v)
+   $0:self.document.createTextNode(v)
   },View$1.Const());
  };
  Doc.TextView=function(txt)
@@ -3305,15 +3320,15 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    return function(state)
    {
-    var b,t,D,t$1,D$1,R,t$2,C,t$3,B,p,i;
+    var b,t,D,_this,t$1,D$1,_this$1,R,_this$2,t$2,C,_this$3,t$3,B,_this$4,p,i;
     function f($1,$2)
     {
      return PeopleList.PersonRow(dispatch,state,$1,$2);
     }
-    return(b=(t=(D=Common.DisabledWhenRefreshing(state),(t$1=(D$1=AttrModule.DynamicClassPred("is-active",View$1.Map(function($1)
+    return(b=(t=(D=Common.DisabledWhenRefreshing(state),(_this=(t$1=(D$1=AttrModule.DynamicClassPred("is-active",View$1.Map(function($1)
     {
      return $1.Deleting!=null;
-    },state)),(R=Common.DisabledWhenRefreshing(state),(t$2=(C=Common.DisabledWhenRefreshing(state),(t$3=(B=Doc.ConvertSeqBy(function(kv)
+    },state)),(_this$1=(R=Common.DisabledWhenRefreshing(state),(_this$2=(t$2=(C=Common.DisabledWhenRefreshing(state),(_this$3=(t$3=(B=Doc.ConvertSeqBy(function(kv)
     {
      return kv.K;
     },function(k)
@@ -3328,11 +3343,11 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     },View$1.Map(function($1)
     {
      return $1.People;
-    },state)),ProviderBuilder.Make$1().WithHole({
+    },state)),(_this$4=new ProviderBuilder.New$1(),(_this$4.h.push({
      $:0,
      $0:"body",
      $1:B
-    })),t$3.WithHole(Handler.EventQ2(t$3.k,"create",function()
+    }),_this$4))),(t$3.h.push(Handler.EventQ2(t$3.k,"create",function()
     {
      return t$3.i;
     },function()
@@ -3343,11 +3358,11 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
        $:1
       }
      });
-    }))).WithHole({
+    })),t$3)),(_this$3.h.push({
      $:3,
      $0:"createattr",
      $1:C
-    })),t$2.WithHole(Handler.EventQ2(t$2.k,"refresh",function()
+    }),_this$3))),(t$2.h.push(Handler.EventQ2(t$2.k,"refresh",function()
     {
      return t$2.i;
     },function()
@@ -3356,15 +3371,15 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
       $:2,
       $0:false
      });
-    }))).WithHole({
+    })),t$2)),(_this$2.h.push({
      $:3,
      $0:"refreshattr",
      $1:R
-    })).WithHole({
+    }),_this$2))),(_this$1.h.push({
      $:3,
      $0:"deletemodalattr",
      $1:D$1
-    })),t$1.WithHole(Handler.EventQ2(t$1.k,"deleteconfirm",function()
+    }),_this$1))),(t$1.h.push(Handler.EventQ2(t$1.k,"deleteconfirm",function()
     {
      return t$1.i;
     },function()
@@ -3372,11 +3387,11 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
      dispatch({
       $:6
      });
-    }))).WithHole({
+    })),t$1)),(_this.h.push({
      $:3,
      $0:"deleteconfirmattr",
      $1:D
-    })),t.WithHole(Handler.EventQ2(t.k,"deletecancel",function()
+    }),_this))),(t.h.push(Handler.EventQ2(t.k,"deletecancel",function()
     {
      return t.i;
     },function()
@@ -3384,7 +3399,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
      dispatch({
       $:7
      });
-    }))),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],PeopleClient_Templates.table(p[0])),(b.i=i,i)))).get_Doc();
+    })),t)),(p=Handler.CompleteHoles(b.k,b.h,[]),(i=new TemplateInstance.New(p[1],PeopleClient_Templates.table(p[0])),b.i=i,i))).get_Doc();
    };
   },null,null,null);
  };
@@ -3609,16 +3624,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
      }
     }
  };
- Arrays.choose=function(f,arr)
- {
-  var q,i,$1,m;
-  q=[];
-  for(i=0,$1=arr.length-1;i<=$1;i++){
-   m=f(arr[i]);
-   m==null?void 0:q.push(m.$0);
-  }
-  return q;
- };
  Arrays.ofList=function(xs)
  {
   var l,q;
@@ -3700,6 +3705,16 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     i=i+1;
    }
   return res;
+ };
+ Arrays.choose=function(f,arr)
+ {
+  var q,i,$1,m;
+  q=[];
+  for(i=0,$1=arr.length-1;i<=$1;i++){
+   m=f(arr[i]);
+   m==null?void 0:q.push(m.$0);
+  }
+  return q;
  };
  Arrays.checkLength=function(arr1,arr2)
  {
@@ -3819,6 +3834,10 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     }:null;
    },d);
   },
+  get_Values:function()
+  {
+   return new ValueCollection.New(this);
+  },
   GetEnumerator:function()
   {
    return Enumerator.Get0(this);
@@ -3855,76 +3874,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     e.Dispose();
   }
  },Dictionary);
- DomUtility.Doc=function()
- {
-  SC$6.$cctor();
-  return SC$6.Doc;
- };
- DomUtility.ChildrenArray=function(element)
- {
-  var a,i,$1;
-  a=[];
-  for(i=0,$1=element.childNodes.length-1;i<=$1;i++)a.push(element.childNodes[i]);
-  return a;
- };
- DomUtility.AddClass=function(element,cl)
- {
-  var c;
-  c=DomUtility.getClass(element);
-  c===""?DomUtility.setClass(element,cl):!DomUtility.clsRE(cl).test(c)?DomUtility.setClass(element,c+" "+cl):void 0;
- };
- DomUtility.RemoveClass=function(element,cl)
- {
-  var _this;
-  DomUtility.setClass(element,(_this=DomUtility.clsRE(cl),DomUtility.getClass(element).replace(_this,function($1,$2,$3)
-  {
-   return $2===""||$3===""?"":" ";
-  })));
- };
- DomUtility.IterSelector=function(el,selector,f)
- {
-  var l,i,$1;
-  l=el.querySelectorAll(selector);
-  for(i=0,$1=l.length-1;i<=$1;i++)f(l[i]);
- };
- DomUtility.CreateElement=function(name)
- {
-  return DomUtility.Doc().createElement(name);
- };
- DomUtility.SetAttr=function(el,name,value)
- {
-  el.setAttribute(name,value);
- };
- DomUtility.getClass=function(element)
- {
-  return element instanceof Global.SVGElement?element.getAttribute("class"):element.className;
- };
- DomUtility.setClass=function(element,value)
- {
-  if(element instanceof Global.SVGElement)
-   element.setAttribute("class",value);
-  else
-   element.className=value;
- };
- DomUtility.clsRE=function(cls)
- {
-  return new Global.RegExp("(\\s+|^)"+cls+"(?:\\s+"+cls+")*(\\s+|$)","g");
- };
- DomUtility.InsertAt=function(parent,pos,node)
- {
-  var m;
-  if(!(node.parentNode===parent&&pos===(m=node.nextSibling,Unchecked.Equals(m,null)?null:m)))
-   parent.insertBefore(node,pos);
- };
- DomUtility.RemoveNode=function(parent,el)
- {
-  if(el.parentNode===parent)
-   parent.removeChild(el);
- };
- DomUtility.CreateText=function(s)
- {
-  return DomUtility.Doc().createTextNode(s);
- };
  Elt=UI.Elt=Runtime$1.Class({
   ToUpdater:function()
   {
@@ -4214,8 +4163,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Concurrency.Zero=function()
  {
-  SC$7.$cctor();
-  return SC$7.Zero;
+  SC$6.$cctor();
+  return SC$6.Zero;
  };
  Concurrency.Start=function(c,ctOpt)
  {
@@ -4311,8 +4260,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Concurrency.defCTS=function()
  {
-  SC$7.$cctor();
-  return SC$7.defCTS;
+  SC$6.$cctor();
+  return SC$6.defCTS;
  };
  Concurrency.UncaughtAsyncError=function(e)
  {
@@ -4320,13 +4269,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Concurrency.scheduler=function()
  {
-  SC$7.$cctor();
-  return SC$7.scheduler;
+  SC$6.$cctor();
+  return SC$6.scheduler;
  };
  Concurrency.noneCT=function()
  {
-  SC$7.$cctor();
-  return SC$7.noneCT;
+  SC$6.$cctor();
+  return SC$6.noneCT;
  };
  Concurrency.Return=function(x)
  {
@@ -4592,7 +4541,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Common.EditForm=function(dispatch,state,param)
  {
-  var b,t,S,t$1,D,v,s,v$1,s$1,v$2,s$2,v$3,s$3,v$4,s$4,p,i;
+  var b,t,S,_this,_this$1,t$1,D,_this$2,v,s,_this$3,v$1,s$1,_this$4,v$2,s$2,_this$5,v$3,s$3,_this$6,v$4,s$4,_this$7,p,i;
   function dispatchEditing(msg)
   {
    var f;
@@ -4612,10 +4561,10 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     return f(msg(x));
    };
   }
-  return(b=(t=(S=Common.DisabledWhenRefreshing(state),(t$1=(D=AttrModule.DynamicProp("disabled",View$1.Map(function($1)
+  return(b=(t=(S=Common.DisabledWhenRefreshing(state),(_this=(_this$1=(t$1=(D=AttrModule.DynamicProp("disabled",View$1.Map(function($1)
   {
    return!$1.Editing.HasDied;
-  },state)),(v=View$1.Map(function($1)
+  },state)),(_this$2=(v=View$1.Map(function($1)
   {
    return $1.Editing.HasDied;
   },state),(s=dispatchEditing(function(a)
@@ -4624,7 +4573,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $:4,
     $0:a
    };
-  }),(v$1=View$1.Map(function($1)
+  }),(_this$3=(v$1=View$1.Map(function($1)
   {
    return $1.Editing.Died;
   },state),(s$1=dispatchEditing(function(a)
@@ -4633,7 +4582,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $:3,
     $0:a
    };
-  }),(v$2=View$1.Map(function($1)
+  }),(_this$4=(v$2=View$1.Map(function($1)
   {
    return $1.Editing.Born;
   },state),(s$2=dispatchEditing(function(a)
@@ -4642,7 +4591,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $:2,
     $0:a
    };
-  }),(v$3=View$1.Map(function($1)
+  }),(_this$5=(v$3=View$1.Map(function($1)
   {
    return $1.Editing.LastName;
   },state),(s$3=dispatchEditing(function(a)
@@ -4651,7 +4600,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $:1,
     $0:a
    };
-  }),(v$4=View$1.Map(function($1)
+  }),(_this$6=(v$4=View$1.Map(function($1)
   {
    return $1.Editing.FirstName;
   },state),(s$4=dispatchEditing(function(a)
@@ -4660,46 +4609,46 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $:0,
     $0:a
    };
-  }),ProviderBuilder.Make$1().WithHole({
+  }),(_this$7=new ProviderBuilder.New$1(),(_this$7.h.push({
    $:8,
    $0:"firstname",
    $1:new FromView.New(v$4,s$4)
-  }))).WithHole({
+  }),_this$7)))),(_this$6.h.push({
    $:8,
    $0:"lastname",
    $1:new FromView.New(v$3,s$3)
-  }))).WithHole({
+  }),_this$6)))),(_this$5.h.push({
    $:8,
    $0:"born",
    $1:new FromView.New(v$2,s$2)
-  }))).WithHole({
+  }),_this$5)))),(_this$4.h.push({
    $:8,
    $0:"died",
    $1:new FromView.New(v$1,s$1)
-  }))).WithHole({
+  }),_this$4)))),(_this$3.h.push({
    $:9,
    $0:"hasdied",
    $1:new FromView.New(v,s)
-  }))).WithHole({
+  }),_this$3)))),(_this$2.h.push({
    $:3,
    $0:"diedattr",
    $1:D
-  })),t$1.WithHole(Handler.EventQ2(t$1.k,"submit",function()
+  }),_this$2))),(t$1.h.push(Handler.EventQ2(t$1.k,"submit",function()
   {
    return t$1.i;
   },function(e)
   {
    dispatch(param.SubmitMessage);
    e.Event.preventDefault();
-  }))).WithHole({
+  })),t$1)),(_this$1.h.push({
    $:1,
    $0:"submittext",
    $1:param.SubmitText
-  }).WithHole({
+  }),_this$1)),(_this.h.push({
    $:3,
    $0:"submitattr",
    $1:S
-  })),t.WithHole(Handler.EventQ2(t.k,"back",function()
+  }),_this))),(t.h.push(Handler.EventQ2(t.k,"back",function()
   {
    return t.i;
   },function()
@@ -4710,7 +4659,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
      $:0
     }
    });
-  }))),(p=Handler.CompleteHoles(b.k,b.h,[["firstname",0],["lastname",0],["born",0],["died",0],["hasdied",2]]),(i=new TemplateInstance.New(p[1],PeopleClient_Templates.form(p[0])),(b.i=i,i)))).get_Doc();
+  })),t)),(p=Handler.CompleteHoles(b.k,b.h,[["firstname",0],["lastname",0],["born",0],["died",0],["hasdied",2]]),(i=new TemplateInstance.New(p[1],PeopleClient_Templates.form(p[0])),b.i=i,i))).get_Doc();
  };
  Common.DisabledWhenRefreshing=function(state)
  {
@@ -4741,27 +4690,16 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   this.doc=doc;
   this.allVars=c.$==0?c.$0:Operators.FailWith("Should not happen");
  },TemplateInstance);
- ProviderBuilder=Server.ProviderBuilder=Runtime$1.Class({
-  WithHole:function(h)
-  {
-   this.h.push(h);
-   return this;
-  }
- },null,ProviderBuilder);
- ProviderBuilder.Make$1=function()
+ ProviderBuilder=Server.ProviderBuilder=Runtime$1.Class({},Obj,ProviderBuilder);
+ ProviderBuilder.New$1=Runtime$1.Ctor(function()
  {
   var c;
-  return ProviderBuilder.New(null,(c=Guid.NewGuid(),Global.String(c)),[],null);
- };
- ProviderBuilder.New=function(Instance,Key,Holes,Source)
- {
-  var $1;
-  return new ProviderBuilder(($1={
-   i:Instance,
-   k:Key,
-   h:Holes
-  },(Runtime$1.SetOptional($1,"s",Source),$1)));
- };
+  Obj.New.call(this);
+  this.i=null;
+  this.k=(c=Guid.NewGuid(),Global.String(c));
+  this.h=[];
+  Runtime$1.SetOptional(this,"s",null);
+ },ProviderBuilder);
  View$1.Map=function(fn,a)
  {
   return View$1.CreateLazy(function()
@@ -4927,8 +4865,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   return{
    $:5,
    $0:holeName,
-   $1:true,
-   $2:function(el)
+   $1:function(el)
    {
     return function(ev)
     {
@@ -4941,27 +4878,36 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    }
   };
  };
- Handler.CompleteHoles=function(a,filledHoles,vars)
+ Handler.CompleteHoles=function(key,filledHoles,vars)
  {
-  var allVars,filledVars,e,h,$1,n;
+  var allVars,filledVars,e,h,n;
   function c(name,ty)
   {
-   var p,r,r$1,r$2;
-   return filledVars.Contains(name)?null:(p=ty===0?(r=Var$1.Create$1(""),[{
-    $:8,
-    $0:name,
-    $1:r
-   },r]):ty===1?(r$1=Var$1.Create$1(0),[{
-    $:13,
-    $0:name,
-    $1:r$1
-   },r$1]):ty===2?(r$2=Var$1.Create$1(false),[{
-    $:9,
-    $0:name,
-    $1:r$2
-   },r$2]):Operators.FailWith("Invalid value type"),(allVars.set_Item(name,p[1]),{
+   var r;
+   return filledVars.Contains(name)?null:(r=ty===0?TemplateInitializer.GetOrAddHoleFor(key,name,function()
+   {
+    return{
+     $:8,
+     $0:name,
+     $1:Var$1.Create$1("")
+    };
+   }):ty===1?TemplateInitializer.GetOrAddHoleFor(key,name,function()
+   {
+    return{
+     $:13,
+     $0:name,
+     $1:Var$1.Create$1(0)
+    };
+   }):ty===2?TemplateInitializer.GetOrAddHoleFor(key,name,function()
+   {
+    return{
+     $:9,
+     $0:name,
+     $1:Var$1.Create$1(false)
+    };
+   }):Operators.FailWith("Invalid value type"),(allVars.set_Item(name,r),{
     $:1,
-    $0:p[0]
+    $0:r
    }));
   }
   allVars=new Dictionary.New$5();
@@ -4972,7 +4918,9 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    while(e.MoveNext())
     {
      h=e.Current();
-     (h.$==8?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==11?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==10?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==13?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==12?($1=[h.$0,Client$1.Box(h.$1)],true):h.$==9&&($1=[h.$0,Client$1.Box(h.$1)],true))?(n=$1[0],filledVars.Add(n),allVars.set_Item(n,$1[1])):void 0;
+     n=h.$0;
+     filledVars.Add(n);
+     allVars.set_Item(n,h);
     }
   }
   finally
@@ -4980,9 +4928,9 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    if(typeof e=="object"&&"Dispose"in e)
     e.Dispose();
   }
-  return[Seq.append(filledHoles,Arrays.choose(function($2)
+  return[Seq.append(filledHoles,Arrays.choose(function($1)
   {
-   return c($2[0],$2[1]);
+   return c($1[0],$1[1]);
   },vars)),{
    $:0,
    $0:allVars
@@ -5011,6 +4959,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  AttrModule.DynamicCustom=function(set,view)
  {
   return Attrs.Dynamic(view,set);
+ };
+ AttrModule.Prop=function(name,value)
+ {
+  return Attrs.Static(function(el)
+  {
+   el[name]=value;
+  });
  };
  AttrModule.DynamicProp=function(name,view)
  {
@@ -5041,128 +4996,57 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  AttrModule.Value=function(_var)
  {
-  function g(a)
+  var t;
+  t=(((BindVar.StringApply())(_var))(Attrs.Static))(function(f)
   {
-   return{
-    $:1,
-    $0:a
-   };
-  }
-  return AttrModule.CustomValue(_var,Global.id,function(x)
-  {
-   return g(Global.id(x));
+   return AttrModule.DynamicCustom(f,_var.get_View());
   });
+  return AttrProxy.Append(t[0],t[1]);
  };
  AttrModule.Checked=function(_var)
  {
-  function onSet(el,ev)
+  var t;
+  t=(((BindVar.BoolCheckedApply())(_var))(Attrs.Static))(function(f)
   {
-   return!Unchecked.Equals(_var.Get(),el.checked)?_var.Set(el.checked):null;
-  }
-  return AttrProxy.Concat([AttrModule.DynamicProp("checked",_var.get_View()),AttrModule.Handler("change",function($1)
-  {
-   return function($2)
-   {
-    return onSet($1,$2);
-   };
-  })]);
+   return AttrModule.DynamicCustom(f,_var.get_View());
+  });
+  return AttrProxy.Append(t[0],t[1]);
  };
  AttrModule.IntValue=function(_var)
  {
-  return AttrModule.CustomVar(_var,function($1,$2)
+  var t;
+  t=(((BindVar.IntApplyChecked())(_var))(Attrs.Static))(function(f)
   {
-   var i;
-   i=$2.get_Input();
-   return $1.value!==i?void($1.value=i):null;
-  },function(el)
-  {
-   var s,m,o;
-   s=el.value;
-   return{
-    $:1,
-    $0:String.isBlank(s)?(el.checkValidity?el.checkValidity():true)?new CheckedInput({
-     $:2,
-     $0:s
-    }):new CheckedInput({
-     $:1,
-     $0:s
-    }):(m=(o=0,[Numeric.TryParseInt32(s,{
-     get:function()
-     {
-      return o;
-     },
-     set:function(v)
-     {
-      o=v;
-     }
-    }),o]),m[0]?new CheckedInput({
-     $:0,
-     $0:m[1],
-     $1:s
-    }):new CheckedInput({
-     $:1,
-     $0:s
-    }))
-   };
+   return AttrModule.DynamicCustom(f,_var.get_View());
   });
+  return AttrProxy.Append(t[0],t[1]);
  };
  AttrModule.IntValueUnchecked=function(_var)
  {
-  return AttrModule.CustomValue(_var,Global.String,function(s)
+  var t;
+  t=(((BindVar.IntApplyUnchecked())(_var))(Attrs.Static))(function(f)
   {
-   var pd;
-   return String.isBlank(s)?{
-    $:1,
-    $0:0
-   }:(pd=+s,pd!==pd>>0?null:{
-    $:1,
-    $0:pd
-   });
+   return AttrModule.DynamicCustom(f,_var.get_View());
   });
+  return AttrProxy.Append(t[0],t[1]);
  };
  AttrModule.FloatValue=function(_var)
  {
-  return AttrModule.CustomVar(_var,function($1,$2)
+  var t;
+  t=(((BindVar.FloatApplyChecked())(_var))(Attrs.Static))(function(f)
   {
-   var i;
-   i=$2.get_Input();
-   return $1.value!==i?void($1.value=i):null;
-  },function(el)
-  {
-   var s,i;
-   s=el.value;
-   return{
-    $:1,
-    $0:String.isBlank(s)?(el.checkValidity?el.checkValidity():true)?new CheckedInput({
-     $:2,
-     $0:s
-    }):new CheckedInput({
-     $:1,
-     $0:s
-    }):(i=+s,Global.isNaN(i)?new CheckedInput({
-     $:1,
-     $0:s
-    }):new CheckedInput({
-     $:0,
-     $0:i,
-     $1:s
-    }))
-   };
+   return AttrModule.DynamicCustom(f,_var.get_View());
   });
+  return AttrProxy.Append(t[0],t[1]);
  };
  AttrModule.FloatValueUnchecked=function(_var)
  {
-  return AttrModule.CustomValue(_var,Global.String,function(s)
+  var t;
+  t=(((BindVar.FloatApplyUnchecked())(_var))(Attrs.Static))(function(f)
   {
-   var pd;
-   return String.isBlank(s)?{
-    $:1,
-    $0:0
-   }:(pd=+s,Global.isNaN(pd)?null:{
-    $:1,
-    $0:pd
-   });
+   return AttrModule.DynamicCustom(f,_var.get_View());
   });
+  return AttrProxy.Append(t[0],t[1]);
  };
  AttrModule.Dynamic=function(name,view)
  {
@@ -5170,62 +5054,9 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   {
    return function(v)
    {
-    return DomUtility.SetAttr(el,name,v);
+    return el.setAttribute(name,v);
    };
   });
- };
- AttrModule.CustomValue=function(_var,toString,fromString)
- {
-  return AttrModule.CustomVar(_var,function($1,$2)
-  {
-   $1.value=toString($2);
-  },function(e)
-  {
-   return fromString(e.value);
-  });
- };
- AttrModule.CustomVar=function(_var,set,get)
- {
-  function onChange(el,e)
-  {
-   return _var.UpdateMaybe(function(v)
-   {
-    var m,$1;
-    m=get(el);
-    return m!=null&&m.$==1&&(!Unchecked.Equals(m.$0,v)&&($1=[m,m.$0],true))?$1[0]:null;
-   });
-  }
-  function set$1(e,v)
-  {
-   var m,$1;
-   m=get(e);
-   return m!=null&&m.$==1&&(Unchecked.Equals(m.$0,v)&&($1=m.$0,true))?null:set(e,v);
-  }
-  return AttrProxy.Concat([AttrModule.Handler("change",function($1)
-  {
-   return function($2)
-   {
-    return onChange($1,$2);
-   };
-  }),AttrModule.Handler("input",function($1)
-  {
-   return function($2)
-   {
-    return onChange($1,$2);
-   };
-  }),AttrModule.Handler("keypress",function($1)
-  {
-   return function($2)
-   {
-    return onChange($1,$2);
-   };
-  }),AttrModule.DynamicCustom(function($1)
-  {
-   return function($2)
-   {
-    return set$1($1,$2);
-   };
-  },_var.get_View())]);
  };
  Fresh.Id=function()
  {
@@ -5234,13 +5065,13 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Fresh.set_counter=function($1)
  {
-  SC$8.$cctor();
-  SC$8.counter=$1;
+  SC$7.$cctor();
+  SC$7.counter=$1;
  };
  Fresh.counter=function()
  {
-  SC$8.$cctor();
-  return SC$8.counter;
+  SC$7.$cctor();
+  return SC$7.counter;
  };
  Fresh.Int=function()
  {
@@ -5357,8 +5188,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  RouterOperators.rInt=function()
  {
-  SC$9.$cctor();
-  return SC$9.rInt;
+  SC$8.$cctor();
+  return SC$8.rInt;
  };
  RouterOperators.rCors=function(r)
  {
@@ -5400,7 +5231,9 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   SC$5.$cctor=Global.ignore;
   SC$5.LoadedTemplates=new Dictionary.New$5();
   SC$5.LocalTemplatesLoaded=false;
+  SC$5.GlobalHoles=new Dictionary.New$5();
   SC$5.TextHoleRE="\\${([^}]+)}";
+  SC$5.RenderedFullDocTemplate=null;
  };
  HashSet=Collections.HashSet=Runtime$1.Class({
   Add:function(item)
@@ -5528,11 +5361,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   HashSet.New$4.call(this,init,Unchecked.Equals,Unchecked.Hash);
  },HashSet);
- SC$6.$cctor=function()
- {
-  SC$6.$cctor=Global.ignore;
-  SC$6.Doc=self.document;
- };
  Docs.LinkElement=function(el,children)
  {
   Docs.InsertDoc(el,children,null);
@@ -5749,7 +5577,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  Docs.CreateTextNode=function()
  {
   return{
-   Text:DomUtility.CreateText(""),
+   Text:self.document.createTextNode(""),
    Dirty:false,
    Value:""
   };
@@ -6223,7 +6051,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return Attrs.Static(function(el)
   {
-   DomUtility.SetAttr(el,name,value);
+   el.setAttribute(name,value);
   });
  };
  AttrProxy.Concat=function(xs)
@@ -6376,22 +6204,22 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return Seq.forall(f,Strings.protect(s));
  };
- Strings.Trim=function(s)
- {
-  return s.replace(new Global.RegExp("^\\s+"),"").replace(new Global.RegExp("\\s+$"),"");
- };
  Strings.protect=function(s)
  {
   return s===null?"":s;
  };
- SC$7.$cctor=function()
+ Strings.Trim=function(s)
  {
-  SC$7.$cctor=Global.ignore;
-  SC$7.noneCT=CT.New(false,[]);
-  SC$7.scheduler=new Scheduler.New();
-  SC$7.defCTS=[new CancellationTokenSource.New()];
-  SC$7.Zero=Concurrency.Return();
-  SC$7.GetCT=function(c)
+  return s.replace(new Global.RegExp("^\\s+"),"").replace(new Global.RegExp("\\s+$"),"");
+ };
+ SC$6.$cctor=function()
+ {
+  SC$6.$cctor=Global.ignore;
+  SC$6.noneCT=CT.New(false,[]);
+  SC$6.scheduler=new Scheduler.New();
+  SC$6.defCTS=[new CancellationTokenSource.New()];
+  SC$6.Zero=Concurrency.Return();
+  SC$6.GetCT=function(c)
   {
    c.k({
     $:0,
@@ -6414,16 +6242,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return Operators.FailWith("The input sequence has an insufficient number of elements.");
  };
- List$1=Collections.List=Runtime$1.Class({
-  GetEnumerator:function()
-  {
-   return Enumerator.Get(this);
-  },
-  GetEnumerator0:function()
-  {
-   return Enumerator.Get0(this);
-  }
- },null,List$1);
  Guid.NewGuid=function()
  {
   return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(new Global.RegExp("[xy]","g"),function(c)
@@ -6605,6 +6423,16 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   throw new FormatException.New$1("Format String can be only \"D\", \"d\", \"N\", \"n\", \"P\", \"p\", \"B\", \"b\", \"X\" or \"x\".");
  };
+ List$1=Collections.List=Runtime$1.Class({
+  GetEnumerator:function()
+  {
+   return Enumerator.Get(this);
+  },
+  GetEnumerator0:function()
+  {
+   return Enumerator.Get0(this);
+  }
+ },null,List$1);
  Attrs.Static=function(attr$1)
  {
   return new AttrProxy({
@@ -6741,7 +6569,102 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return Dyn.New(e,0,[],null);
  };
- Client$1.Box=Global.id;
+ DomUtility.AddClass=function(element,cl)
+ {
+  var c;
+  c=DomUtility.getClass(element);
+  c===""?DomUtility.setClass(element,cl):!DomUtility.clsRE(cl).test(c)?DomUtility.setClass(element,c+" "+cl):void 0;
+ };
+ DomUtility.RemoveClass=function(element,cl)
+ {
+  var _this;
+  DomUtility.setClass(element,(_this=DomUtility.clsRE(cl),DomUtility.getClass(element).replace(_this,function($1,$2,$3)
+  {
+   return $2===""||$3===""?"":" ";
+  })));
+ };
+ DomUtility.ParseHTMLIntoFakeRoot=function(elem)
+ {
+  var root,tag,m,p,w;
+  root=self.document.createElement("div");
+  return!DomUtility.rhtml().test(elem)?(root.appendChild(self.document.createTextNode(elem)),root):(tag=(m=DomUtility.rtagName().exec(elem),Unchecked.Equals(m,null)?"":Arrays.get(m,1).toLowerCase()),(p=(w=(DomUtility.wrapMap())[tag],w?w:DomUtility.defaultWrap()),(root.innerHTML=p[1]+elem.replace(DomUtility.rxhtmlTag(),"<$1></$2>")+p[2],function(elt,a)
+  {
+   var i;
+   while(true)
+    if(a===0)
+     return elt;
+    else
+     {
+      i=a;
+      elt=elt.lastChild;
+      a=i-1;
+     }
+  }(root,p[0]))));
+ };
+ DomUtility.getClass=function(element)
+ {
+  return element instanceof Global.SVGElement?element.getAttribute("class"):element.className;
+ };
+ DomUtility.setClass=function(element,value)
+ {
+  if(element instanceof Global.SVGElement)
+   element.setAttribute("class",value);
+  else
+   element.className=value;
+ };
+ DomUtility.clsRE=function(cls)
+ {
+  return new Global.RegExp("(\\s+|^)"+cls+"(?:\\s+"+cls+")*(\\s+|$)","g");
+ };
+ DomUtility.rhtml=function()
+ {
+  SC$10.$cctor();
+  return SC$10.rhtml;
+ };
+ DomUtility.wrapMap=function()
+ {
+  SC$10.$cctor();
+  return SC$10.wrapMap;
+ };
+ DomUtility.defaultWrap=function()
+ {
+  SC$10.$cctor();
+  return SC$10.defaultWrap;
+ };
+ DomUtility.rxhtmlTag=function()
+ {
+  SC$10.$cctor();
+  return SC$10.rxhtmlTag;
+ };
+ DomUtility.rtagName=function()
+ {
+  SC$10.$cctor();
+  return SC$10.rtagName;
+ };
+ DomUtility.IterSelector=function(el,selector,f)
+ {
+  var l,i,$1;
+  l=el.querySelectorAll(selector);
+  for(i=0,$1=l.length-1;i<=$1;i++)f(l[i]);
+ };
+ DomUtility.InsertAt=function(parent,pos,node)
+ {
+  var m;
+  if(!(node.parentNode===parent&&pos===(m=node.nextSibling,Unchecked.Equals(m,null)?null:m)))
+   parent.insertBefore(node,pos);
+ };
+ DomUtility.ChildrenArray=function(element)
+ {
+  var a,i,$1;
+  a=[];
+  for(i=0,$1=element.childNodes.length-1;i<=$1;i++)a.push(element.childNodes[i]);
+  return a;
+ };
+ DomUtility.RemoveNode=function(parent,el)
+ {
+  if(el.parentNode===parent)
+   parent.removeChild(el);
+ };
  List$2.startsWith=function(s,l)
  {
   var $1;
@@ -6797,7 +6720,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   var m;
   m=instance.querySelector("[ws-replace]");
-  return Unchecked.Equals(m,null)?(console.warn("Filling non-existent text hole",templateName),null):(m.parentNode.replaceChild(new Global.Text(fillWith),m),{
+  return Unchecked.Equals(m,null)?(console.warn("Filling non-existent text hole",templateName),null):(m.parentNode.replaceChild(self.document.createTextNode(fillWith),m),{
    $:1,
    $0:m.getAttribute("ws-replace")
   });
@@ -6806,7 +6729,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   function run(attrName)
   {
-   DomUtility.IterSelector(instance,"["+attrName+"]",function(e)
+   Templates.foreachNotPreserved(instance,"["+attrName+"]",function(e)
    {
     if(!dontRemove.Contains(e.getAttribute(attrName)))
      e.removeAttribute(attrName);
@@ -6815,7 +6738,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   run("ws-attr");
   run("ws-onafterrender");
   run("ws-var");
-  DomUtility.IterSelector(instance,"[ws-hole]",function(e)
+  Templates.foreachNotPreserved(instance,"[ws-hole]",function(e)
   {
    if(!dontRemove.Contains(e.getAttribute("ws-hole")))
     {
@@ -6824,19 +6747,19 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
       e.removeChild(e.lastChild);
     }
   });
-  DomUtility.IterSelector(instance,"[ws-replace]",function(e)
+  Templates.foreachNotPreserved(instance,"[ws-replace]",function(e)
   {
    if(!dontRemove.Contains(e.getAttribute("ws-replace")))
     e.parentNode.removeChild(e);
   });
-  DomUtility.IterSelector(instance,"[ws-on]",function(e)
+  Templates.foreachNotPreserved(instance,"[ws-on]",function(e)
   {
    e.setAttribute("ws-on",Strings.concat(" ",Arrays.filter(function(x)
    {
     return dontRemove.Contains(Arrays.get(Strings.SplitChars(x,[":"],1),1));
    },Strings.SplitChars(e.getAttribute("ws-on"),[" "],1))));
   });
-  DomUtility.IterSelector(instance,"[ws-attr-holes]",function(e)
+  Templates.foreachNotPreserved(instance,"[ws-attr-holes]",function(e)
   {
    var holeAttrs,i,$1,attrName,_this;
    holeAttrs=Strings.SplitChars(e.getAttribute("ws-attr-holes"),[" "],1);
@@ -6870,7 +6793,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   function run(attrName)
   {
-   DomUtility.IterSelector(t,"["+attrName+"]",function(e)
+   Templates.foreachNotPreserved(t,"["+attrName+"]",function(e)
    {
     var m,o;
     m=(o=null,[mappings.TryGetValue(e.getAttribute(attrName).toLowerCase(),{
@@ -6891,7 +6814,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   run("ws-attr");
   run("ws-onafterrender");
   run("ws-var");
-  DomUtility.IterSelector(t,"[ws-on]",function(e)
+  Templates.foreachNotPreserved(t,"[ws-on]",function(e)
   {
    e.setAttribute("ws-on",Strings.concat(" ",Arrays.map(function(x)
    {
@@ -6910,7 +6833,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     return m[0]?Arrays.get(a,0)+":"+m[1]:x;
    },Strings.SplitChars(e.getAttribute("ws-on"),[" "],1))));
   });
-  DomUtility.IterSelector(t,"[ws-attr-holes]",function(e)
+  Templates.foreachNotPreserved(t,"[ws-attr-holes]",function(e)
   {
    var holeAttrs,i,$1;
    holeAttrs=Strings.SplitChars(e.getAttribute("ws-attr-holes"),[" "],1);
@@ -7064,8 +6987,8 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  Settings.BatchUpdatesEnabled=function()
  {
-  SC$10.$cctor();
-  return SC$10.BatchUpdatesEnabled;
+  SC$9.$cctor();
+  return SC$9.BatchUpdatesEnabled;
  };
  Mailbox.StartProcessor=function(procAsync)
  {
@@ -7252,12 +7175,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    return x;
   },view);
  },FromView);
- CheckedInput=UI.CheckedInput=Runtime$1.Class({
-  get_Input:function()
-  {
-   return this.$==1?this.$0:this.$==2?this.$0:this.$1;
-  }
- },null,CheckedInput);
  Array.ofSeqNonCopying=function(xs)
  {
   var q,o;
@@ -7354,14 +7271,53 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    $this.dirty=true;
   },view);
  },DynamicAttrNode);
+ TemplateInitializer.$cctor=function()
+ {
+  TemplateInitializer.$cctor=Global.ignore;
+  TemplateInitializer.initialized=new Dictionary.New$5();
+ };
+ TemplateInitializer=Server.TemplateInitializer=Runtime$1.Class({},Obj,TemplateInitializer);
+ TemplateInitializer.GetOrAddHoleFor=function(id,holeName,initHole)
+ {
+  var d,m,o,h;
+  TemplateInitializer.$cctor();
+  d=TemplateInitializer.GetHolesFor(id);
+  m=(o=null,[d.TryGetValue(holeName,{
+   get:function()
+   {
+    return o;
+   },
+   set:function(v)
+   {
+    o=v;
+   }
+  }),o]);
+  return m[0]?m[1]:(h=initHole(),(d.set_Item(holeName,h),h));
+ };
+ TemplateInitializer.GetHolesFor=function(id)
+ {
+  var m,o,d;
+  TemplateInitializer.$cctor();
+  m=(o=null,[TemplateInitializer.initialized.TryGetValue(id,{
+   get:function()
+   {
+    return o;
+   },
+   set:function(v)
+   {
+    o=v;
+   }
+  }),o]);
+  return m[0]?m[1]:(d=new Dictionary.New$5(),(TemplateInitializer.initialized.set_Item(id,d),d));
+ };
+ SC$7.$cctor=function()
+ {
+  SC$7.$cctor=Global.ignore;
+  SC$7.counter=0;
+ };
  SC$8.$cctor=function()
  {
   SC$8.$cctor=Global.ignore;
-  SC$8.counter=0;
- };
- SC$9.$cctor=function()
- {
-  SC$9.$cctor=Global.ignore;
   function pInt(x)
   {
    var m,o;
@@ -7380,22 +7336,22 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:m[1]
    }:null;
   }
-  SC$9.Empty=Router$1.New$1(function()
+  SC$8.Empty=Router$1.New$1(function()
   {
    return[];
   },function()
   {
    return null;
   });
-  SC$9.rRoot=Router$1.New(function(path)
+  SC$8.rRoot=Router$1.New(function(path)
   {
    return[path];
   },[]);
-  SC$9.rString=Router$1.New$1(function(path)
+  SC$8.rString=Router$1.New$1(function(path)
   {
    var m,m$1;
    m=path.Segments;
-   return m.$==1?(m$1=StringEncoding.read(m.$0),m$1!=null&&m$1.$==1?[[Route.New(m.$1,path.QueryArgs,path.FormData,path.Method,path.Body),m$1.$0]]:[]):[];
+   return m.$==0?[[path,""]]:(m$1=StringEncoding.read(m.$0),m$1!=null&&m$1.$==1?[[Route.New(m.$1,path.QueryArgs,path.FormData,path.Method,path.Body),m$1.$0]]:[]);
   },function(value)
   {
    return{
@@ -7403,7 +7359,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(value==null?"null":StringEncoding.write(value))]
    };
   });
-  SC$9.rChar=Router$1.New$1(function(path)
+  SC$8.rChar=Router$1.New$1(function(path)
   {
    var m,m$1,$1;
    m=path.Segments;
@@ -7415,7 +7371,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(value)]
    };
   });
-  SC$9.rGuid=Router$1.New$1(function(path)
+  SC$8.rGuid=Router$1.New$1(function(path)
   {
    var m,res;
    m=path.Segments;
@@ -7436,7 +7392,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rInt=Router$1.New$1(function(path)
+  SC$8.rInt=Router$1.New$1(function(path)
   {
    var m,res;
    m=path.Segments;
@@ -7457,7 +7413,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rDouble=Router$1.New$1(function(path)
+  SC$8.rDouble=Router$1.New$1(function(path)
   {
    var m,res,$1;
    m=path.Segments;
@@ -7469,7 +7425,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rSByte=Router$1.New$1(function(path)
+  SC$8.rSByte=Router$1.New$1(function(path)
   {
    var m,res;
    m=path.Segments;
@@ -7490,7 +7446,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rByte=Router$1.New$1(function(path)
+  SC$8.rByte=Router$1.New$1(function(path)
   {
    var m,res;
    m=path.Segments;
@@ -7511,7 +7467,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rInt16=Router$1.New$1(function(path)
+  SC$8.rInt16=Router$1.New$1(function(path)
   {
    var m,res;
    m=path.Segments;
@@ -7532,7 +7488,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rUInt16=Router$1.New$1(function(path)
+  SC$8.rUInt16=Router$1.New$1(function(path)
   {
    var m,res;
    m=path.Segments;
@@ -7553,7 +7509,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rUInt=Router$1.New$1(function(path)
+  SC$8.rUInt=Router$1.New$1(function(path)
   {
    var m,res;
    m=path.Segments;
@@ -7574,7 +7530,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rInt64=Router$1.New$1(function(path)
+  SC$8.rInt64=Router$1.New$1(function(path)
   {
    var m,res;
    m=path.Segments;
@@ -7595,7 +7551,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rUInt64=Router$1.New$1(function(path)
+  SC$8.rUInt64=Router$1.New$1(function(path)
   {
    var m,res;
    m=path.Segments;
@@ -7616,7 +7572,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rSingle=Router$1.New$1(function(path)
+  SC$8.rSingle=Router$1.New$1(function(path)
   {
    var m,res,$1;
    m=path.Segments;
@@ -7628,7 +7584,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(Global.String(value))]
    };
   });
-  SC$9.rBool=Router$1.New$1(function(path)
+  SC$8.rBool=Router$1.New$1(function(path)
   {
    var m,m$1,o;
    m=path.Segments;
@@ -7649,7 +7605,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(value?"True":"False")]
    };
   });
-  SC$9.rWildcard=Router$1.New$1(function(path)
+  SC$8.rWildcard=Router$1.New$1(function(path)
   {
    return[[Route.New(T$1.Empty,path.QueryArgs,path.FormData,path.Method,path.Body),Strings.concat("/",path.Segments)]];
   },function(value)
@@ -7659,7 +7615,7 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
     $0:[Route.Segment$2(value)]
    };
   });
-  SC$9.rDateTime=Router$1.New$1(function(path)
+  SC$8.rDateTime=Router$1.New$1(function(path)
   {
    var m,h,$1,$2,$3,$4,$5,$6,$7;
    m=path.Segments;
@@ -7863,11 +7819,17 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    Duration:nextDuration
   };
  };
- SC$10.$cctor=function()
+ SC$9.$cctor=function()
  {
-  SC$10.$cctor=Global.ignore;
-  SC$10.BatchUpdatesEnabled=true;
+  SC$9.$cctor=Global.ignore;
+  SC$9.BatchUpdatesEnabled=true;
  };
+ CheckedInput=UI.CheckedInput=Runtime$1.Class({
+  get_Input:function()
+  {
+   return this.$==1?this.$0:this.$==2?this.$0:this.$1;
+  }
+ },null,CheckedInput);
  Router$1.New=function(Parse,Segment)
  {
   return{
@@ -7982,6 +7944,27 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  {
   return Numeric.TryParse(s,0,18446744073709551615,r);
  };
+ SC$10.$cctor=function()
+ {
+  var table;
+  SC$10.$cctor=Global.ignore;
+  SC$10.rxhtmlTag=new Global.RegExp("<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\\w:]+)[^>]*)\\/>","gi");
+  SC$10.rtagName=new Global.RegExp("<([\\w:]+)");
+  SC$10.rhtml=new Global.RegExp("<|&#?\\w+;");
+  SC$10.wrapMap=(table=[1,"<table>","</table>"],{
+   option:[1,"<select multiple='multiple'>","</select>"],
+   legend:[1,"<fieldset>","</fieldset>"],
+   area:[1,"<map>","</map>"],
+   param:[1,"<object>","</object>"],
+   thead:table,
+   tbody:table,
+   tfoot:table,
+   tr:[2,"<table><tbody>","</tbody></table>"],
+   col:[2,"<table><colgroup>","</colgoup></table>"],
+   td:[3,"<table><tbody><tr>","</tr></tbody></table>"]
+  });
+  SC$10.defaultWrap=[0,"",""];
+ };
  SC$11.$cctor=function()
  {
   SC$11.$cctor=Global.ignore;
@@ -8045,8 +8028,168 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
  };
  SC$12.$cctor=function()
  {
+  var g,s,g$1,s$1,g$2,s$2,g$3,s$3,g$4,s$4;
   SC$12.$cctor=Global.ignore;
   SC$12.EmptyAttr=null;
+  SC$12.BoolCheckedApply=Runtime$1.Curried3(function(_var,el,cb)
+  {
+   return[el(function(el$1)
+   {
+    el$1.addEventListener("change",function()
+    {
+     return!Unchecked.Equals(_var.Get(),el$1.checked)?_var.Set(el$1.checked):null;
+    });
+   }),cb(function(el$1)
+   {
+    return function(v)
+    {
+     el$1.checked=v;
+    };
+   })];
+  });
+  SC$12.StringSet=function(el)
+  {
+   return function(s$5)
+   {
+    el.value=s$5;
+   };
+  };
+  SC$12.StringGet=function(el)
+  {
+   return{
+    $:1,
+    $0:el.value
+   };
+  };
+  SC$12.StringApply=(g=BindVar.StringGet(),(s=BindVar.StringSet(),Runtime$1.Curried(BindVar.ApplyValue,3,[g,function($1,$2)
+  {
+   return(s($1))($2);
+  }])));
+  SC$12.IntSetUnchecked=function(el)
+  {
+   return function(i)
+   {
+    el.value=String$1(i);
+   };
+  };
+  SC$12.IntGetUnchecked=function(el)
+  {
+   var s$5,pd;
+   s$5=el.value;
+   return String.isBlank(s$5)?{
+    $:1,
+    $0:0
+   }:(pd=+s$5,pd!==pd>>0?null:{
+    $:1,
+    $0:pd
+   });
+  };
+  SC$12.IntApplyUnchecked=(g$1=BindVar.IntGetUnchecked(),(s$1=BindVar.IntSetUnchecked(),Runtime$1.Curried(BindVar.ApplyValue,3,[g$1,function($1,$2)
+  {
+   return(s$1($1))($2);
+  }])));
+  SC$12.IntSetChecked=function(el)
+  {
+   return function(i)
+   {
+    var i$1;
+    i$1=i.get_Input();
+    return el.value!==i$1?void(el.value=i$1):null;
+   };
+  };
+  SC$12.IntGetChecked=function(el)
+  {
+   var s$5,m,o;
+   s$5=el.value;
+   return{
+    $:1,
+    $0:String.isBlank(s$5)?(el.checkValidity?el.checkValidity():true)?new CheckedInput({
+     $:2,
+     $0:s$5
+    }):new CheckedInput({
+     $:1,
+     $0:s$5
+    }):(m=(o=0,[Numeric.TryParseInt32(s$5,{
+     get:function()
+     {
+      return o;
+     },
+     set:function(v)
+     {
+      o=v;
+     }
+    }),o]),m[0]?new CheckedInput({
+     $:0,
+     $0:m[1],
+     $1:s$5
+    }):new CheckedInput({
+     $:1,
+     $0:s$5
+    }))
+   };
+  };
+  SC$12.IntApplyChecked=(g$2=BindVar.IntGetChecked(),(s$2=BindVar.IntSetChecked(),Runtime$1.Curried(BindVar.ApplyValue,3,[g$2,function($1,$2)
+  {
+   return(s$2($1))($2);
+  }])));
+  SC$12.FloatSetUnchecked=function(el)
+  {
+   return function(i)
+   {
+    el.value=String$1(i);
+   };
+  };
+  SC$12.FloatGetUnchecked=function(el)
+  {
+   var s$5,pd;
+   s$5=el.value;
+   return String.isBlank(s$5)?{
+    $:1,
+    $0:0
+   }:(pd=+s$5,Global.isNaN(pd)?null:{
+    $:1,
+    $0:pd
+   });
+  };
+  SC$12.FloatApplyUnchecked=(g$3=BindVar.FloatGetUnchecked(),(s$3=BindVar.FloatSetUnchecked(),Runtime$1.Curried(BindVar.ApplyValue,3,[g$3,function($1,$2)
+  {
+   return(s$3($1))($2);
+  }])));
+  SC$12.FloatSetChecked=function(el)
+  {
+   return function(i)
+   {
+    var i$1;
+    i$1=i.get_Input();
+    return el.value!==i$1?void(el.value=i$1):null;
+   };
+  };
+  SC$12.FloatGetChecked=function(el)
+  {
+   var s$5,i;
+   s$5=el.value;
+   return{
+    $:1,
+    $0:String.isBlank(s$5)?(el.checkValidity?el.checkValidity():true)?new CheckedInput({
+     $:2,
+     $0:s$5
+    }):new CheckedInput({
+     $:1,
+     $0:s$5
+    }):(i=+s$5,Global.isNaN(i)?new CheckedInput({
+     $:1,
+     $0:s$5
+    }):new CheckedInput({
+     $:0,
+     $0:i,
+     $1:s$5
+    }))
+   };
+  };
+  SC$12.FloatApplyChecked=(g$4=BindVar.FloatGetChecked(),(s$4=BindVar.FloatSetChecked(),Runtime$1.Curried(BindVar.ApplyValue,3,[g$4,function($1,$2)
+  {
+   return(s$4($1))($2);
+  }])));
  };
  Numeric.TryParse=function(s,min,max,r)
  {
@@ -8097,10 +8240,142 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
   set.IntersectWith(HashSet$1.ToArray(b));
   return set;
  };
+ BindVar.ApplyValue=function(get,set,_var,el,cb)
+ {
+  return[el(function(el$1)
+  {
+   function onChange()
+   {
+    _var.UpdateMaybe(function(v)
+    {
+     var m,$1;
+     m=get(el$1);
+     return m!=null&&m.$==1&&(!Unchecked.Equals(m.$0,v)&&($1=[m,m.$0],true))?$1[0]:null;
+    });
+   }
+   el$1.addEventListener("change",onChange);
+   el$1.addEventListener("input",onChange);
+   el$1.addEventListener("keypress",onChange);
+  }),cb(function(el$1)
+  {
+   return function(v)
+   {
+    var m,$1;
+    m=get(el$1);
+    return m!=null&&m.$==1&&(Unchecked.Equals(m.$0,v)&&($1=m.$0,true))?null:set(el$1,v);
+   };
+  })];
+ };
+ BindVar.StringSet=function()
+ {
+  SC$12.$cctor();
+  return SC$12.StringSet;
+ };
+ BindVar.StringGet=function()
+ {
+  SC$12.$cctor();
+  return SC$12.StringGet;
+ };
+ BindVar.IntSetUnchecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.IntSetUnchecked;
+ };
+ BindVar.IntGetUnchecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.IntGetUnchecked;
+ };
+ BindVar.IntSetChecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.IntSetChecked;
+ };
+ BindVar.IntGetChecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.IntGetChecked;
+ };
+ BindVar.FloatSetUnchecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.FloatSetUnchecked;
+ };
+ BindVar.FloatGetUnchecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.FloatGetUnchecked;
+ };
+ BindVar.FloatSetChecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.FloatSetChecked;
+ };
+ BindVar.FloatGetChecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.FloatGetChecked;
+ };
+ BindVar.StringApply=function()
+ {
+  SC$12.$cctor();
+  return SC$12.StringApply;
+ };
+ BindVar.BoolCheckedApply=function()
+ {
+  SC$12.$cctor();
+  return SC$12.BoolCheckedApply;
+ };
+ BindVar.IntApplyChecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.IntApplyChecked;
+ };
+ BindVar.IntApplyUnchecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.IntApplyUnchecked;
+ };
+ BindVar.FloatApplyChecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.FloatApplyChecked;
+ };
+ BindVar.FloatApplyUnchecked=function()
+ {
+  SC$12.$cctor();
+  return SC$12.FloatApplyUnchecked;
+ };
+ String.isBlank=function(s)
+ {
+  return Strings.forall(Char.IsWhiteSpace,s);
+ };
  Queue.Clear=function(a)
  {
   a.splice(0,Arrays.length(a));
  };
+ ValueCollection=Collections.ValueCollection=Runtime$1.Class({
+  GetEnumerator$1:function()
+  {
+   return Enumerator.Get(Seq.map(function(kvp)
+   {
+    return kvp.V;
+   },this.d));
+  },
+  GetEnumerator:function()
+  {
+   return this.GetEnumerator$1();
+  },
+  GetEnumerator0:function()
+  {
+   return this.GetEnumerator$1();
+  }
+ },Obj,ValueCollection);
+ ValueCollection.New=Runtime$1.Ctor(function(d)
+ {
+  Obj.New.call(this);
+  this.d=d;
+ },ValueCollection);
  DomNodes.Children=function(elem,delims)
  {
   var n,o,a;
@@ -8186,10 +8461,6 @@ var JSON;JSON||(JSON={}),function(){"use strict";function i(n){return n<10?"0"+n
    $:0,
    $0:Array.ofSeqNonCopying(q)
   };
- };
- String.isBlank=function(s)
- {
-  return Strings.forall(Char.IsWhiteSpace,s);
  };
  SC$13.$cctor=function()
  {
